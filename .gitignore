@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Screenshots (dev tool output)
+temporary screenshots/
+
+# Claude dev tools
+claude:skills:*/
+CLAUDE.md
+serve.mjs
+screenshot.mjs

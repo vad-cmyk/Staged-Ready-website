@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staged Ready — Professional Property Staging</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:   '#F2EDE8',
+            parchment: '#E8E0D6',
+            espresso:'#2D2926',
+            charcoal:'#4A4540',
+            gold:    '#C9A96E',
+            'gold-light': '#DFC08A',
+            'gold-dark':  '#A8844A',
+            mist:    '#F8F5F1',
+            fog:     '#EDE7E0',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans:    ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ─── Base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: #F2EDE8;
+      color: #4A4540;
+      overflow-x: hidden;
+    }
+
+    /* ─── Grain Texture Overlay ─────────────────────────────── */
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: 0.045;
+      mix-blend-mode: overlay;
+      z-index: 1;
+    }
+
+    /* ─── Navigation ─────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    #nav.scrolled {
+      background: rgba(242, 237, 232, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(74, 69, 64, 0.08);
+    }
+    .nav-link {
+      position: relative;
+      font-size: 0.8125rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #F2EDE8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    #nav.scrolled .nav-link { color: #4A4540; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: #C9A96E;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after { width: 100%; }
+    .nav-link:hover, .nav-link:focus-visible { color: #C9A96E; }
+    #nav.scrolled .nav-link:hover { color: #C9A96E; }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: min(100vh, 900px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('brand_assets/IMG_1601.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(45,41,38,0.85) 0%, rgba(45,41,38,0.3) 50%, rgba(45,41,38,0.1) 100%),
+        linear-gradient(120deg, rgba(201,169,110,0.12) 0%, transparent 60%);
+    }
+    .hero-tint {
+      position: absolute;
+      inset: 0;
+      background: rgba(74, 69, 64, 0.15);
+      mix-blend-mode: multiply;
+    }
+    /* Radial glows behind hero content */
+    .hero-glow {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse at 20% 80%, rgba(201,169,110,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ─── Section Label ──────────────────────────────────────── */
+    .section-label {
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #C9A96E;
+      font-weight: 500;
+    }
+
+    /* ─── Buttons ────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2.25rem;
+      background: #C9A96E;
+      color: #2D2926;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid #C9A96E;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 24px rgba(201,169,110,0.25), 0 1px 4px rgba(45,41,38,0.12);
+      position: relative;
+    }
+    .btn-primary:hover {
+      background: #DFC08A;
+      border-color: #DFC08A;
+      box-shadow: 0 8px 40px rgba(201,169,110,0.35), 0 2px 8px rgba(45,41,38,0.15);
+    }
+    .btn-primary:active { transform: translateY(1px); box-shadow: 0 2px 12px rgba(201,169,110,0.2); }
+    .btn-primary:focus-visible { outline: 2px solid #C9A96E; outline-offset: 3px; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2.25rem;
+      background: transparent;
+      color: #F2EDE8;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid rgba(242,237,232,0.6);
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+    .btn-outline:hover { background: rgba(242,237,232,0.12); border-color: rgba(242,237,232,0.9); }
+    .btn-outline:active { transform: translateY(1px); }
+    .btn-outline:focus-visible { outline: 2px solid #F2EDE8; outline-offset: 3px; }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      background: #C9A96E;
+      color: #2D2926;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid #C9A96E;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 24px rgba(201,169,110,0.3);
+    }
+    .btn-dark:hover { background: #DFC08A; box-shadow: 0 8px 40px rgba(201,169,110,0.45); }
+    .btn-dark:active { transform: translateY(1px); }
+    .btn-dark:focus-visible { outline: 2px solid #C9A96E; outline-offset: 3px; }
+
+    /* ─── Service Cards ──────────────────────────────────────── */
+    .service-card {
+      background: #F8F5F1;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+      box-shadow:
+        0 2px 8px rgba(74,69,64,0.06),
+        0 1px 2px rgba(74,69,64,0.04);
+      border: 1px solid rgba(74,69,64,0.06);
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 20px 60px rgba(74,69,64,0.12),
+        0 4px 16px rgba(74,69,64,0.08),
+        0 0 0 1.5px #C9A96E;
+    }
+    .service-card-img {
+      overflow: hidden;
+      position: relative;
+    }
+    .service-card-img img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .service-card:hover .service-card-img img { transform: scale(1.04); }
+    .service-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(45,41,38,0.5) 0%, transparent 50%);
+    }
+
+    /* ─── Stats Strip ────────────────────────────────────────── */
+    .stat-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #C9A96E;
+    }
+
+    /* ─── Gallery Grid ───────────────────────────────────────── */
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: #2D2926;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); opacity: 0.85; }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(45,41,38,0.6) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+    .gallery-overlay-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+    .gallery-item:hover .gallery-overlay-icon { opacity: 1; }
+
+    /* Gallery Filter Tabs */
+    .filter-tab {
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid rgba(74,69,64,0.2);
+      color: #4A4540;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: #2D2926;
+      color: #F2EDE8;
+      border-color: #2D2926;
+    }
+    .filter-tab:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+
+    /* ─── Process Timeline ───────────────────────────────────── */
+    .process-step {
+      position: relative;
+    }
+    .process-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: rgba(201,169,110,0.25);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      transition: color 0.4s ease;
+    }
+    .process-step:hover .process-number { color: rgba(201,169,110,0.6); }
+    .process-line {
+      position: absolute;
+      top: 1.75rem;
+      left: calc(3.5rem + 1px);
+      width: calc(100% - 3.5rem);
+      height: 1px;
+      background: linear-gradient(to right, rgba(201,169,110,0.3), rgba(201,169,110,0.05));
+    }
+
+    /* ─── Testimonials ───────────────────────────────────────── */
+    .testimonial-card {
+      background: #F8F5F1;
+      border: 1px solid rgba(74,69,64,0.08);
+      box-shadow: 0 2px 12px rgba(74,69,64,0.05);
+    }
+
+    /* ─── Marquee ────────────────────────────────────────────── */
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── Scroll Reveal ──────────────────────────────────────── */
+    /* JS adds .js-ready to body; animations only activate then */
+    .js-ready .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .js-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+    .js-ready .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .js-ready .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .js-ready .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .js-ready .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .js-ready .reveal-scale {
+      opacity: 0;
+      transform: scale(0.96);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .js-ready .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* Stagger children */
+    .stagger > *:nth-child(1) { transition-delay: 0s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.1s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.2s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.3s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.4s; }
+
+    /* ─── Lightbox ───────────────────────────────────────────── */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(45,41,38,0.95);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    #lightbox.open { opacity: 1; pointer-events: all; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      width: 2.5rem; height: 2.5rem;
+      background: rgba(242,237,232,0.1);
+      border: 1px solid rgba(242,237,232,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: #F2EDE8;
+      font-size: 1.25rem;
+      transition: background 0.2s ease;
+    }
+    #lightbox-close:hover { background: rgba(201,169,110,0.3); }
+
+    /* ─── Mobile Nav ─────────────────────────────────────────── */
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(45,41,38,0.97);
+      backdrop-filter: blur(16px);
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      padding: 1.5rem 2rem 2rem;
+      gap: 1.5rem;
+      border-top: 1px solid rgba(242,237,232,0.1);
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu .nav-link { color: #F2EDE8; font-size: 1rem; letter-spacing: 0.05em; }
+    #mobile-menu .nav-link::after { background: #C9A96E; }
+
+    /* ─── Divider ornament ───────────────────────────────────── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #C9A96E;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.3;
+    }
+
+    /* ─── Pillar Icons ───────────────────────────────────────── */
+    .pillar-icon {
+      width: 3rem; height: 3rem;
+      border: 1.5px solid rgba(201,169,110,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #C9A96E;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .pillar-icon:hover,
+    .pillar-card:hover .pillar-icon {
+      background: rgba(201,169,110,0.12);
+      border-color: #C9A96E;
+    }
+
+    /* ─── Smooth scroll momentum (JS-enhanced) ──────────────── */
+    .smooth-wrap { will-change: transform; }
+
+    /* ─── Custom scrollbar ───────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F2EDE8; }
+    ::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.5); border-radius: 3px; }
+
+    /* ─── Cursor ────────────────────────────────────────────── */
+    .cursor-gold { cursor: crosshair; }
+
+    /* ─── Footer social links ────────────────────────────────── */
+    .social-link {
+      width: 2.5rem; height: 2.5rem;
+      border: 1px solid rgba(242,237,232,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(242,237,232,0.6);
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      text-decoration: none;
+    }
+    .social-link:hover { background: rgba(201,169,110,0.15); color: #C9A96E; border-color: rgba(201,169,110,0.4); }
+    .social-link:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════════ -->
+<nav id="nav" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 group" aria-label="Staged Ready — Home">
+      <img src="brand_assets/Staged ready.jpeg" alt="Staged Ready Logo" class="h-10 w-10 object-cover" style="border-radius:2px;" />
+      <div class="hidden sm:block">
+        <p class="font-display font-500 text-sm leading-tight tracking-widest uppercase" style="color:#F2EDE8; letter-spacing:0.18em; transition: color 0.3s;" id="nav-brand-name">Staged Ready</p>
+        <p class="text-xs tracking-widest uppercase" style="color:rgba(242,237,232,0.5); letter-spacing:0.2em; font-size:0.55rem; transition: color 0.3s;" id="nav-brand-sub">Property Staging</p>
+      </div>
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <a href="#contact" class="hidden md:inline-flex btn-primary btn-magnetic" style="padding:0.65rem 1.75rem; font-size:0.75rem;">
+      Get a Quote
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button id="hamburger" aria-label="Toggle menu" class="md:hidden flex flex-col gap-1.5 p-1" style="color:#F2EDE8;">
+      <span class="block w-6 h-px bg-current transition-transform duration-300" id="ham-1"></span>
+      <span class="block w-4 h-px bg-current transition-opacity duration-300 ml-auto" id="ham-2"></span>
+      <span class="block w-6 h-px bg-current transition-transform duration-300" id="ham-3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" role="menu">
+    <a href="#services" class="nav-link" role="menuitem">Services</a>
+    <a href="#portfolio" class="nav-link" role="menuitem">Portfolio</a>
+    <a href="#process" class="nav-link" role="menuitem">Process</a>
+    <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+    <a href="#contact" class="btn-primary" style="width:fit-content;">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" class="grain relative">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-tint"></div>
+  <div class="hero-glow"></div>
+
+  <!-- Radial blob top-right -->
+  <div style="position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.12) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-20 pt-36 w-full">
+    <div class="max-w-3xl">
+      <div class="section-label mb-6 reveal" style="color:rgba(201,169,110,0.9);">Property Staging Specialists</div>
+
+      <h1 class="font-display reveal" style="
+        font-size: clamp(3rem, 7vw, 6.25rem);
+        font-weight: 300;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: #F2EDE8;
+        margin-bottom: 1.5rem;
+        transition-delay: 0.1s;
+      ">
+        Transform Your<br />
+        Property.<br />
+        <em style="font-style:italic; font-weight:300; color:#DFC08A;">Maximise</em> Your<br />
+        Returns.
+      </h1>
+
+      <p class="reveal" style="
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        line-height: 1.75;
+        color: rgba(242,237,232,0.75);
+        max-width: 48ch;
+        margin-bottom: 2.5rem;
+        transition-delay: 0.2s;
+      ">
+        We help property developers maximise the sale price of their properties through strategic home staging. By presenting each project at its full potential, we generate stronger buyer interest, reduce time on the market and help developers move onto their next project more quickly.
+      </p>
+
+      <div class="flex flex-wrap gap-4 reveal stagger" style="transition-delay:0.3s;">
+        <a href="#services" class="btn-primary btn-magnetic">
+          Our Services
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+        <a href="#portfolio" class="btn-outline">
+          View Portfolio
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero stats chips -->
+    <div class="flex flex-wrap gap-6 mt-14 reveal" style="transition-delay:0.45s;">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div style="width:1px;height:2.5rem;background:rgba(201,169,110,0.4);"></div>
+        <div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;line-height:1;color:#DFC08A;letter-spacing:-0.02em;">150<span style="font-size:1rem;">+</span></p>
+          <p style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,237,232,0.5);margin-top:0.2rem;">Properties Staged</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div style="width:1px;height:2.5rem;background:rgba(201,169,110,0.4);"></div>
+        <div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;line-height:1;color:#DFC08A;letter-spacing:-0.02em;">95<span style="font-size:1rem;">%</span></p>
+          <p style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,237,232,0.5);margin-top:0.2rem;">Faster Results</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div style="width:1px;height:2.5rem;background:rgba(201,169,110,0.4);"></div>
+        <div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;line-height:1;color:#DFC08A;letter-spacing:-0.02em;">30<span style="font-size:1rem;">%+</span></p>
+          <p style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,237,232,0.5);margin-top:0.2rem;">Yield Uplift</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div style="position:absolute;bottom:2.5rem;right:2.5rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0.5;">
+    <p style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#F2EDE8;writing-mode:vertical-rl;">Scroll</p>
+    <div style="width:1px;height:3rem;background:linear-gradient(to bottom,rgba(242,237,232,0.6),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
+  </div>
+  <style>@keyframes scrollPulse{0%,100%{opacity:0.5;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.15)}}</style>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MARQUEE STRIP
+═══════════════════════════════════════════════════════════ -->
+<div style="background:#2D2926;padding:1rem 0;overflow:hidden;border-top:1px solid rgba(201,169,110,0.15);">
+  <div class="marquee-track" aria-hidden="true">
+    <span style="display:inline-flex;align-items:center;gap:3rem;padding-right:3rem;">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Property for Sale</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">HMO Staging</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Service Accommodation</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Professional Staging</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Property for Sale</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">HMO Staging</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Service Accommodation</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Professional Staging</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+    </span>
+    <!-- Duplicate for seamless loop -->
+    <span style="display:inline-flex;align-items:center;gap:3rem;padding-right:3rem;" aria-hidden="true">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Property for Sale</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">HMO Staging</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Service Accommodation</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:rgba(242,237,232,0.3);letter-spacing:0.05em;white-space:nowrap;">Professional Staging</span>
+      <span style="color:#C9A96E;font-size:0.75rem;">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════════════════════ -->
+<section id="services" style="padding: clamp(5rem,10vw,9rem) 0; background:#F2EDE8;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header — centered -->
+    <div class="text-center mb-16">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="font-display reveal" style="
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 300;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        color: #2D2926;
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
+        transition-delay: 0.1s;
+      ">
+        Staging for Every<br /><em style="font-style:italic;">Property Strategy</em>
+      </h2>
+      <p class="reveal" style="font-size:1rem;line-height:1.75;color:#6B6460;max-width:45ch;margin:0 auto;transition-delay:0.2s;">
+        Whether you're selling, letting to multiple tenants, or running a serviced accommodation,
+        we stage your property to perform at its best.
+      </p>
+    </div>
+
+    <!-- 3-column card grid -->
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+
+      <!-- Card 1: For Sale -->
+      <div class="service-card reveal stagger" style="transition-delay:0s;">
+        <div class="service-card-img">
+          <img src="brand_assets/IMG_0566.JPG" alt="Elegantly staged bedroom for property sale" loading="lazy" />
+        </div>
+        <div style="padding: 2rem 1.75rem 2.25rem;">
+          <div class="section-label" style="margin-bottom:0.75rem;">01</div>
+          <h3 class="font-display" style="font-size:1.875rem;font-weight:400;letter-spacing:-0.02em;line-height:1.1;color:#2D2926;margin-bottom:1rem;">
+            Property<br />for Sale
+          </h3>
+          <p style="font-size:0.9rem;line-height:1.75;color:#6B6460;margin-bottom:1.5rem;">
+            First impressions sell properties. We stage your home to create an emotional connection with buyers — helping you achieve a faster sale and the best possible price.
+          </p>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:#C9A96E;font-weight:600;cursor:pointer;" class="group">
+            <span>Learn More</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 0.25s ease;" class="group-hover:translate-x-1" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: HMO -->
+      <div class="service-card reveal stagger" style="transition-delay:0.1s; margin-top: 2rem;">
+        <div class="service-card-img">
+          <img src="brand_assets/IMG_0503.JPG" alt="Staged HMO twin bedroom with high-quality furnishings" loading="lazy" />
+        </div>
+        <div style="padding: 2rem 1.75rem 2.25rem;">
+          <div class="section-label" style="margin-bottom:0.75rem;">02</div>
+          <h3 class="font-display" style="font-size:1.875rem;font-weight:400;letter-spacing:-0.02em;line-height:1.1;color:#2D2926;margin-bottom:1rem;">
+            HMO<br />Properties
+          </h3>
+          <p style="font-size:0.9rem;line-height:1.75;color:#6B6460;margin-bottom:1.5rem;">
+            Attract quality long-term tenants to your House in Multiple Occupation. Our staging creates welcoming, functional rooms that command premium rents and reduce voids.
+          </p>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:#C9A96E;font-weight:600;cursor:pointer;" class="group">
+            <span>Learn More</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 0.25s ease;" class="group-hover:translate-x-1" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Service Accommodation -->
+      <div class="service-card reveal stagger" style="transition-delay:0.2s;">
+        <div class="service-card-img">
+          <img src="brand_assets/IMG_1599.jpg" alt="Staged luxury kitchen for service accommodation" loading="lazy" />
+        </div>
+        <div style="padding: 2rem 1.75rem 2.25rem;">
+          <div class="section-label" style="margin-bottom:0.75rem;">03</div>
+          <h3 class="font-display" style="font-size:1.875rem;font-weight:400;letter-spacing:-0.02em;line-height:1.1;color:#2D2926;margin-bottom:1rem;">
+            Service<br />Accommodation
+          </h3>
+          <p style="font-size:0.9rem;line-height:1.75;color:#6B6460;margin-bottom:1.5rem;">
+            Maximise occupancy rates and guest reviews for your holiday or short-let property. We create spaces that look stunning in listings and deliver exceptional guest experiences.
+          </p>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:#C9A96E;font-weight:600;cursor:pointer;" class="group">
+            <span>Learn More</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 0.25s ease;" class="group-hover:translate-x-1" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SPLIT — WHY STAGED READY (image left, text right)
+═══════════════════════════════════════════════════════════ -->
+<section style="background:#EDE7E0;padding:clamp(5rem,10vw,9rem) 0;overflow:hidden;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Image side -->
+      <div class="reveal-left relative" style="transition-delay:0s;">
+        <div style="position:relative;overflow:hidden;">
+          <img src="brand_assets/IMG_0552.JPG" alt="Beautifully staged property hallway and console table" loading="lazy" style="width:100%;height:clamp(350px,50vw,560px);object-fit:cover;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(45,41,38,0.35),transparent 60%);mix-blend-mode:multiply;"></div>
+        </div>
+        <!-- Floating stat card -->
+        <div style="
+          position:absolute;
+          bottom: -1.5rem;
+          right: -1.5rem;
+          background: #2D2926;
+          padding: 1.5rem 2rem;
+          box-shadow: 0 16px 48px rgba(45,41,38,0.3);
+        ">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2.75rem;font-weight:300;color:#C9A96E;line-height:1;letter-spacing:-0.02em;">30<span style="font-size:1.5rem;">%</span></p>
+          <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,232,0.5);margin-top:0.4rem;">Average yield uplift<br />for staged properties</p>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="reveal-right" style="transition-delay:0.15s;">
+        <p class="section-label">Why Staged Ready</p>
+        <h2 class="font-display" style="
+          font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+          font-weight: 300;
+          letter-spacing: -0.03em;
+          line-height: 1.05;
+          color: #2D2926;
+          margin-top: 0.75rem;
+          margin-bottom: 1.5rem;
+        ">
+          Staging That<br /><em style="font-style:italic;">Outperforms</em><br />Every Time
+        </h2>
+        <p style="font-size:0.9375rem;line-height:1.8;color:#6B6460;margin-bottom:2rem;">
+          We're not interior decorators — we're strategic property stagers. Every decision we make is driven by one goal: maximising the financial return on your property.
+        </p>
+        <p style="font-size:0.9375rem;line-height:1.8;color:#6B6460;margin-bottom:2.5rem;">
+          From sourcing furniture to the final styling touches, we handle everything. You hand us an empty property and we hand you back a space that buyers and tenants love.
+        </p>
+
+        <!-- Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 stagger">
+          <div class="pillar-card">
+            <div class="pillar-icon mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <p style="font-size:0.8125rem;font-weight:600;color:#2D2926;margin-bottom:0.35rem;letter-spacing:0.02em;">Expert Eye</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:#8A8078;">Trained staging specialists with deep property market knowledge.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <p style="font-size:0.8125rem;font-weight:600;color:#2D2926;margin-bottom:0.35rem;letter-spacing:0.02em;">End-to-End</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:#8A8078;">We manage everything: sourcing, delivery, installation, styling.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <p style="font-size:0.8125rem;font-weight:600;color:#2D2926;margin-bottom:0.35rem;letter-spacing:0.02em;">Tailored</p>
+            <p style="font-size:0.8rem;line-height:1.6;color:#8A8078;">Each staging plan is bespoke to your property and target market.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS STRIP
+═══════════════════════════════════════════════════════════ -->
+<section style="background:#2D2926;padding:clamp(4rem,8vw,6rem) 0;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 stagger">
+
+      <div class="text-center reveal" style="transition-delay:0s;">
+        <p class="stat-number"><span data-target="150" data-suffix="+">150+</span></p>
+        <div style="width:2rem;height:1px;background:#C9A96E;margin:0.75rem auto;opacity:0.5;"></div>
+        <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,237,232,0.45);">Properties Staged</p>
+      </div>
+
+      <div class="text-center reveal" style="transition-delay:0.1s;">
+        <p class="stat-number"><span data-target="95" data-suffix="%">95%</span></p>
+        <div style="width:2rem;height:1px;background:#C9A96E;margin:0.75rem auto;opacity:0.5;"></div>
+        <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,237,232,0.45);">Sell / Let Faster</p>
+      </div>
+
+      <div class="text-center reveal" style="transition-delay:0.2s;">
+        <p class="stat-number"><span data-target="30" data-suffix="%">30%</span></p>
+        <div style="width:2rem;height:1px;background:#C9A96E;margin:0.75rem auto;opacity:0.5;"></div>
+        <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,237,232,0.45);">Higher Yields</p>
+      </div>
+
+      <div class="text-center reveal" style="transition-delay:0.3s;">
+        <p class="stat-number"><span data-target="3" data-suffix=" Services">3 Services</span></p>
+        <div style="width:2rem;height:1px;background:#C9A96E;margin:0.75rem auto;opacity:0.5;"></div>
+        <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,237,232,0.45);">Specialist Services</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PORTFOLIO GALLERY
+═══════════════════════════════════════════════════════════ -->
+<section id="portfolio" style="background:#F8F5F1;padding:clamp(5rem,10vw,9rem) 0;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <p class="section-label reveal">Our Work</p>
+        <h2 class="font-display reveal" style="
+          font-size: clamp(2.5rem, 5vw, 3.75rem);
+          font-weight: 300;
+          letter-spacing: -0.03em;
+          line-height: 1.05;
+          color: #2D2926;
+          margin-top: 0.75rem;
+          transition-delay: 0.1s;
+        ">
+          Spaces <em style="font-style:italic;">We've</em><br />Transformed
+        </h2>
+      </div>
+      <!-- Filter tabs -->
+      <div class="flex flex-wrap gap-2 reveal" style="transition-delay:0.2s;" id="filter-tabs">
+        <button class="filter-tab" data-filter="sale">For Sale</button>
+        <button class="filter-tab" data-filter="hmo">HMO</button>
+        <button class="filter-tab" data-filter="sa">Serviced Acc.</button>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="gallery-grid">
+
+      <div class="gallery-item cursor-gold reveal" data-category="hmo" style="height:240px;transition-delay:0s;" data-full="brand_assets/IMG_0503.JPG" role="button" tabindex="0" aria-label="View: HMO twin bedroom">
+        <img src="brand_assets/IMG_0503.JPG" alt="Staged HMO twin bedroom" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="sale" style="height:240px;transition-delay:0.05s;grid-row:span 2;" data-full="brand_assets/IMG_0518.JPG" role="button" tabindex="0" aria-label="View: Staged bedroom for sale">
+        <img src="brand_assets/IMG_0518.JPG" alt="Staged bedroom for sale" loading="lazy" style="height:100%;" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="sa" style="height:240px;transition-delay:0.1s;" data-full="brand_assets/IMG_1599.jpg" role="button" tabindex="0" aria-label="View: Serviced accommodation kitchen">
+        <img src="brand_assets/IMG_1599.jpg" alt="Serviced accommodation kitchen" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="sa" style="height:240px;transition-delay:0.15s;" data-full="brand_assets/IMG_1601.jpg" role="button" tabindex="0" aria-label="View: Serviced accommodation living room">
+        <img src="brand_assets/IMG_1601.jpg" alt="Serviced accommodation living room" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="hmo" style="height:240px;transition-delay:0.2s;" data-full="brand_assets/IMG_0541.JPG" role="button" tabindex="0" aria-label="View: HMO bedroom">
+        <img src="brand_assets/IMG_0541.JPG" alt="Staged HMO bedroom" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="sale" style="height:240px;transition-delay:0.25s;" data-full="brand_assets/IMG_0552.JPG" role="button" tabindex="0" aria-label="View: Styled hallway for sale">
+        <img src="brand_assets/IMG_0552.JPG" alt="Styled hallway for sale" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="sale" style="height:240px;transition-delay:0.3s;" data-full="brand_assets/IMG_0566.JPG" role="button" tabindex="0" aria-label="View: Property staging for sale">
+        <img src="brand_assets/IMG_0566.JPG" alt="Property staging for sale" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="sa" style="height:240px;transition-delay:0.35s;grid-row:span 2;" data-full="brand_assets/IMG_1607.jpg" role="button" tabindex="0" aria-label="View: Serviced accommodation interior">
+        <img src="brand_assets/IMG_1607.jpg" alt="Serviced accommodation interior" loading="lazy" style="height:100%;" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="hmo" style="height:240px;transition-delay:0.4s;" data-full="brand_assets/IMG_1603.jpg" role="button" tabindex="0" aria-label="View: HMO room styling">
+        <img src="brand_assets/IMG_1603.jpg" alt="HMO room styling" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="sa" style="height:240px;transition-delay:0.45s;" data-full="brand_assets/IMG_1605.jpg" role="button" tabindex="0" aria-label="View: Serviced accommodation room">
+        <img src="brand_assets/IMG_1605.jpg" alt="Serviced accommodation room" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+      <div class="gallery-item cursor-gold reveal" data-category="hmo" style="height:240px;transition-delay:0.5s;" data-full="brand_assets/IMG_1608.jpg" role="button" tabindex="0" aria-label="View: HMO property staging">
+        <img src="brand_assets/IMG_1608.jpg" alt="HMO property staging" loading="lazy" />
+        <div class="gallery-overlay-icon"><div style="width:2.5rem;height:2.5rem;border:1px solid rgba(242,237,232,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2EDE8" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROCESS — SPLIT: text left, steps right
+═══════════════════════════════════════════════════════════ -->
+<section id="process" style="background:#F2EDE8;padding:clamp(5rem,10vw,9rem) 0;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+      <!-- Left: header -->
+      <div class="reveal-left">
+        <p class="section-label">Our Approach</p>
+        <h2 class="font-display" style="
+          font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+          font-weight: 300;
+          letter-spacing: -0.03em;
+          line-height: 1.05;
+          color: #2D2926;
+          margin-top: 0.75rem;
+          margin-bottom: 1.5rem;
+        ">
+          A Seamless<br /><em style="font-style:italic;">Process,</em><br />
+          Start to Finish
+        </h2>
+        <p style="font-size:0.9375rem;line-height:1.8;color:#6B6460;margin-bottom:2rem;">
+          We take care of every detail so you don't have to. From initial consultation through to final reveal, our process is designed to be effortless for you.
+        </p>
+        <a href="#contact" class="btn-primary btn-magnetic" style="margin-top:0.5rem;">
+          Start Your Project
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+
+        <!-- Inline image below CTA -->
+        <div style="margin-top:3rem;overflow:hidden;position:relative;">
+          <img src="brand_assets/IMG_1600.jpg" alt="Staged property interior detail" loading="lazy" style="width:100%;height:220px;object-fit:cover;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(45,41,38,0.4),transparent 60%);"></div>
+        </div>
+      </div>
+
+      <!-- Right: steps -->
+      <div class="reveal-right" style="transition-delay:0.15s;">
+        <div class="flex flex-col gap-0">
+
+          <!-- Step 1 -->
+          <div class="process-step flex gap-6 pb-8 relative" style="border-bottom:1px solid rgba(74,69,64,0.1);">
+            <div style="min-width:3rem;">
+              <p class="process-number">01</p>
+            </div>
+            <div style="padding-top:0.5rem;">
+              <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;font-weight:500;margin-bottom:0.4rem;">Consultation</p>
+              <p style="font-size:1.0625rem;font-weight:500;color:#2D2926;margin-bottom:0.5rem;">We Assess Your Property</p>
+              <p style="font-size:0.875rem;line-height:1.7;color:#6B6460;">A site visit or call to understand your property, target audience, and staging objectives.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="process-step flex gap-6 py-8 relative" style="border-bottom:1px solid rgba(74,69,64,0.1);">
+            <div style="min-width:3rem;">
+              <p class="process-number">02</p>
+            </div>
+            <div style="padding-top:0.5rem;">
+              <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;font-weight:500;margin-bottom:0.4rem;">Design Plan</p>
+              <p style="font-size:1.0625rem;font-weight:500;color:#2D2926;margin-bottom:0.5rem;">Tailored Staging Concept</p>
+              <p style="font-size:0.875rem;line-height:1.7;color:#6B6460;">We present a bespoke staging plan with furniture selections, colour scheme, and layout — crafted for your market.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="process-step flex gap-6 py-8 relative" style="border-bottom:1px solid rgba(74,69,64,0.1);">
+            <div style="min-width:3rem;">
+              <p class="process-number">03</p>
+            </div>
+            <div style="padding-top:0.5rem;">
+              <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;font-weight:500;margin-bottom:0.4rem;">Installation</p>
+              <p style="font-size:1.0625rem;font-weight:500;color:#2D2926;margin-bottom:0.5rem;">Full Furnishing & Styling</p>
+              <p style="font-size:0.875rem;line-height:1.7;color:#6B6460;">Our team delivers and installs everything — furniture, artwork, soft furnishings, and accessories.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="process-step flex gap-6 py-8 relative" style="border-bottom:1px solid rgba(74,69,64,0.1);">
+            <div style="min-width:3rem;">
+              <p class="process-number">04</p>
+            </div>
+            <div style="padding-top:0.5rem;">
+              <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;font-weight:500;margin-bottom:0.4rem;">Photography</p>
+              <p style="font-size:1.0625rem;font-weight:500;color:#2D2926;margin-bottom:0.5rem;">Professional Shots Included</p>
+              <p style="font-size:0.875rem;line-height:1.7;color:#6B6460;">We can coordinate professional photography to ensure your listing looks exceptional online.</p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="process-step flex gap-6 pt-8">
+            <div style="min-width:3rem;">
+              <p class="process-number">05</p>
+            </div>
+            <div style="padding-top:0.5rem;">
+              <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;font-weight:500;margin-bottom:0.4rem;">Results</p>
+              <p style="font-size:1.0625rem;font-weight:500;color:#2D2926;margin-bottom:0.5rem;">Your Property Performs</p>
+              <p style="font-size:0.875rem;line-height:1.7;color:#6B6460;">Watch your property attract more interest, sell faster, and achieve higher returns.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════════════════════ -->
+<section style="background:#EDE7E0;padding:clamp(5rem,10vw,9rem) 0;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center mb-14">
+      <p class="section-label reveal">Client Stories</p>
+      <h2 class="font-display reveal" style="
+        font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+        font-weight: 300;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        color: #2D2926;
+        margin-top: 0.75rem;
+        transition-delay: 0.1s;
+      ">
+        What Our Clients Say
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 stagger">
+
+      <div class="testimonial-card p-8 reveal" style="transition-delay:0s;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:#C9A96E;line-height:0.6;margin-bottom:1.5rem;">"</div>
+        <p style="font-size:0.9375rem;line-height:1.8;color:#4A4540;margin-bottom:1.75rem;">
+          Staged Ready transformed my tired rental into something genuinely beautiful. My HMO rooms were let within days and I achieved a 28% rent increase on every room. Incredible value.
+        </p>
+        <div style="display:flex;align-items:center;gap:0.875rem;padding-top:1.25rem;border-top:1px solid rgba(74,69,64,0.08);">
+          <div style="width:2.75rem;height:2.75rem;border-radius:50%;background:linear-gradient(135deg,#C9A96E,#A8844A);display:flex;align-items:center;justify-content:center;color:#F2EDE8;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;">J</div>
+          <div>
+            <p style="font-size:0.875rem;font-weight:600;color:#2D2926;letter-spacing:0.01em;">James Thornton</p>
+            <p style="font-size:0.75rem;color:#8A8078;letter-spacing:0.04em;">HMO Landlord, Birmingham</p>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:2px;" aria-label="5 stars">
+            <span style="color:#C9A96E;font-size:0.75rem;">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card p-8 reveal" style="transition-delay:0.1s;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:#C9A96E;line-height:0.6;margin-bottom:1.5rem;">"</div>
+        <p style="font-size:0.9375rem;line-height:1.8;color:#4A4540;margin-bottom:1.75rem;">
+          We had struggled to sell for 3 months. After Staged Ready came in, we had three offers within a fortnight and sold above asking price. The staging investment paid for itself many times over.
+        </p>
+        <div style="display:flex;align-items:center;gap:0.875rem;padding-top:1.25rem;border-top:1px solid rgba(74,69,64,0.08);">
+          <div style="width:2.75rem;height:2.75rem;border-radius:50%;background:linear-gradient(135deg,#A8844A,#C9A96E);display:flex;align-items:center;justify-content:center;color:#F2EDE8;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;">S</div>
+          <div>
+            <p style="font-size:0.875rem;font-weight:600;color:#2D2926;letter-spacing:0.01em;">Sarah & Mark Davies</p>
+            <p style="font-size:0.75rem;color:#8A8078;letter-spacing:0.04em;">Property Sellers, Coventry</p>
+          </div>
+          <div style="margin-left:auto;" aria-label="5 stars">
+            <span style="color:#C9A96E;font-size:0.75rem;">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card p-8 reveal" style="transition-delay:0.2s;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:#C9A96E;line-height:0.6;margin-bottom:1.5rem;">"</div>
+        <p style="font-size:0.9375rem;line-height:1.8;color:#4A4540;margin-bottom:1.75rem;">
+          My Airbnb bookings jumped 40% after the staging and I started getting 5-star reviews about how beautiful the space is. The professional photography they arranged makes my listing stand out completely.
+        </p>
+        <div style="display:flex;align-items:center;gap:0.875rem;padding-top:1.25rem;border-top:1px solid rgba(74,69,64,0.08);">
+          <div style="width:2.75rem;height:2.75rem;border-radius:50%;background:linear-gradient(135deg,#C9A96E,#6B6460);display:flex;align-items:center;justify-content:center;color:#F2EDE8;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;">R</div>
+          <div>
+            <p style="font-size:0.875rem;font-weight:600;color:#2D2926;letter-spacing:0.01em;">Rachel Okafor</p>
+            <p style="font-size:0.75rem;color:#8A8078;letter-spacing:0.04em;">SA Host, Manchester</p>
+          </div>
+          <div style="margin-left:auto;" aria-label="5 stars">
+            <span style="color:#C9A96E;font-size:0.75rem;">★★★★★</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOUNDER
+═══════════════════════════════════════════════════════════ -->
+<section style="background:#F2EDE8;padding:clamp(5rem,10vw,9rem) 0;overflow:hidden;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Text side (left) -->
+      <div class="reveal-left">
+        <p class="section-label">Meet the Founder</p>
+        <h2 class="font-display" style="
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 300;
+          letter-spacing: -0.03em;
+          line-height: 1.0;
+          color: #2D2926;
+          margin-top: 0.75rem;
+          margin-bottom: 0.25rem;
+        ">Jasmine</h2>
+        <h2 class="font-display" style="
+          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-weight: 300;
+          letter-spacing: -0.03em;
+          line-height: 1.0;
+          color: #2D2926;
+          margin-bottom: 1.75rem;
+        "><em style="font-style:italic;color:#C9A96E;">Harbuz</em></h2>
+
+        <!-- Gold rule -->
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;">
+          <div style="width:2.5rem;height:1px;background:#C9A96E;opacity:0.6;"></div>
+          <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;font-weight:500;">Founder &amp; Lead Stager</p>
+        </div>
+
+        <p style="font-size:1rem;line-height:1.85;color:#6B6460;margin-bottom:1.25rem;">
+          Jasmine's passion for property started long before Staged Ready was born. With a background in property development and an instinctive eye for interior design, she spent years understanding exactly what makes a space feel desirable — and how that translates into real financial results.
+        </p>
+        <p style="font-size:1rem;line-height:1.85;color:#6B6460;margin-bottom:2rem;">
+          Driven by the belief that every property deserves to be presented at its absolute best, she founded Staged Ready to bridge the gap between beautiful interiors and investment performance. Her hands-on approach and relentless attention to detail is at the heart of everything we do.
+        </p>
+
+        <!-- Qualities -->
+        <div style="display:flex;flex-direction:column;gap:0.875rem;">
+          <div style="display:flex;align-items:flex-start;gap:0.875rem;">
+            <div style="min-width:1.25rem;height:1.25rem;margin-top:0.15rem;display:flex;align-items:center;justify-content:center;">
+              <div style="width:5px;height:5px;background:#C9A96E;border-radius:50%;"></div>
+            </div>
+            <p style="font-size:0.9rem;line-height:1.65;color:#4A4540;"><strong style="font-weight:600;color:#2D2926;">Property Development Background</strong> — Deep understanding of what buyers, tenants, and investors respond to.</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.875rem;">
+            <div style="min-width:1.25rem;height:1.25rem;margin-top:0.15rem;display:flex;align-items:center;justify-content:center;">
+              <div style="width:5px;height:5px;background:#C9A96E;border-radius:50%;"></div>
+            </div>
+            <p style="font-size:0.9rem;line-height:1.65;color:#4A4540;"><strong style="font-weight:600;color:#2D2926;">Interior Design Passion</strong> — Every staging decision is guided by both aesthetics and market strategy.</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.875rem;">
+            <div style="min-width:1.25rem;height:1.25rem;margin-top:0.15rem;display:flex;align-items:center;justify-content:center;">
+              <div style="width:5px;height:5px;background:#C9A96E;border-radius:50%;"></div>
+            </div>
+            <p style="font-size:0.9rem;line-height:1.65;color:#4A4540;"><strong style="font-weight:600;color:#2D2926;">Hands-On &amp; Results-Driven</strong> — Personally involved in every project from consultation to final reveal.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image side (right) -->
+      <div class="reveal-right" style="transition-delay:0.15s;position:relative;">
+        <!-- Decorative background shape -->
+        <div style="
+          position:absolute;
+          top: 2rem; right: -1.5rem;
+          width: 75%;
+          height: calc(100% - 1rem);
+          background: #EDE7E0;
+          z-index: 0;
+        "></div>
+
+        <!-- Photo -->
+        <div style="position:relative;z-index:1;overflow:hidden;" >
+          <img
+            src="brand_assets/IMG_1741.jpeg"
+            alt="Jasmine Harbuz — Founder of Staged Ready, styling a property"
+            style="
+              width:100%;
+              height: clamp(480px, 65vw, 680px);
+              object-fit: cover;
+              object-position: center 20%;
+              display:block;
+            "
+          />
+          <!-- Subtle colour overlay -->
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(45,41,38,0.25) 0%,transparent 50%);mix-blend-mode:multiply;"></div>
+        </div>
+
+        <!-- Floating name card -->
+        <div style="
+          position:absolute;
+          bottom: -1.5rem;
+          left: -1.5rem;
+          background: #2D2926;
+          padding: 1.25rem 1.75rem;
+          z-index: 2;
+          box-shadow: 0 12px 40px rgba(45,41,38,0.25);
+        ">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:400;color:#F2EDE8;letter-spacing:0.02em;line-height:1.2;">Jasmine Harbuz</p>
+          <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,169,110,0.8);margin-top:0.3rem;">Founder, Staged Ready</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA BANNER — Full-width dark
+═══════════════════════════════════════════════════════════ -->
+<section id="contact" class="relative grain" style="background:#2D2926;padding:clamp(6rem,12vw,10rem) 0;overflow:hidden;">
+  <!-- Background radial glows -->
+  <div style="position:absolute;top:0;left:0;width:600px;height:400px;background:radial-gradient(ellipse at 0% 0%, rgba(201,169,110,0.15) 0%, transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:0;right:0;width:500px;height:400px;background:radial-gradient(ellipse at 100% 100%, rgba(201,169,110,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center relative z-10">
+    <p class="section-label reveal" style="color:rgba(201,169,110,0.7);">Get Started</p>
+    <h2 class="font-display reveal" style="
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #F2EDE8;
+      margin-top: 0.75rem;
+      margin-bottom: 1.5rem;
+      transition-delay: 0.1s;
+    ">
+      Ready to Stage Your<br /><em style="font-style:italic; color:#DFC08A;">Next Property?</em>
+    </h2>
+    <p class="reveal" style="font-size:clamp(0.9375rem,2vw,1.125rem);line-height:1.75;color:rgba(242,237,232,0.6);max-width:45ch;margin:0 auto 2.5rem;transition-delay:0.2s;">
+      Tell us about your property and we'll provide a free staging consultation and proposal tailored to your goals.
+    </p>
+
+    <div class="reveal" style="transition-delay:0.3s;">
+      <a href="mailto:hello@stagedready.co.uk" class="btn-dark btn-magnetic" style="font-size:0.875rem;padding:1.125rem 3rem;">
+        Book a Free Consultation
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h12M8 2l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- Contact details below -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-14 reveal" style="transition-delay:0.4s;">
+      <a href="mailto:hello@stagedready.co.uk" style="display:flex;align-items:center;gap:0.625rem;font-size:0.875rem;color:rgba(242,237,232,0.5);text-decoration:none;transition:color 0.25s ease;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(242,237,232,0.5)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hello@stagedready.co.uk
+      </a>
+      <div style="width:1px;height:1.25rem;background:rgba(242,237,232,0.15);display:none;" class="sm:block"></div>
+      <a href="tel:+441234567890" style="display:flex;align-items:center;gap:0.625rem;font-size:0.875rem;color:rgba(242,237,232,0.5);text-decoration:none;transition:color 0.25s ease;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(242,237,232,0.5)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.87h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +44 (0) 1234 567 890
+      </a>
+      <div style="width:1px;height:1.25rem;background:rgba(242,237,232,0.15);display:none;" class="sm:block"></div>
+      <span style="display:flex;align-items:center;gap:0.625rem;font-size:0.875rem;color:rgba(242,237,232,0.5);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        West Midlands, UK
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer style="background:#1E1B18;padding:4rem 0 2rem;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Top: Logo + links + social -->
+    <div class="grid md:grid-cols-3 gap-10 pb-10" style="border-bottom:1px solid rgba(242,237,232,0.06);">
+
+      <!-- Brand -->
+      <div>
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.25rem;">
+          <img src="brand_assets/Staged ready.jpeg" alt="Staged Ready" style="height:2.75rem;width:2.75rem;object-fit:cover;" />
+          <div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:#F2EDE8;letter-spacing:0.12em;text-transform:uppercase;">Staged Ready</p>
+            <p style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,232,0.35);">Property Staging</p>
+          </div>
+        </div>
+        <p style="font-size:0.875rem;line-height:1.75;color:rgba(242,237,232,0.4);max-width:28ch;">
+          Professional property staging for sale, HMO, and service accommodation.
+        </p>
+      </div>
+
+      <!-- Nav links -->
+      <div>
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,232,0.3);margin-bottom:1.25rem;font-weight:600;">Navigation</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <a href="#services" style="font-size:0.875rem;color:rgba(242,237,232,0.5);text-decoration:none;transition:color 0.25s ease;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(242,237,232,0.5)'">Services</a>
+          <a href="#portfolio" style="font-size:0.875rem;color:rgba(242,237,232,0.5);text-decoration:none;transition:color 0.25s ease;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(242,237,232,0.5)'">Portfolio</a>
+          <a href="#process" style="font-size:0.875rem;color:rgba(242,237,232,0.5);text-decoration:none;transition:color 0.25s ease;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(242,237,232,0.5)'">Process</a>
+          <a href="#contact" style="font-size:0.875rem;color:rgba(242,237,232,0.5);text-decoration:none;transition:color 0.25s ease;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(242,237,232,0.5)'">Contact</a>
+        </div>
+      </div>
+
+      <!-- Services + social -->
+      <div>
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,232,0.3);margin-bottom:1.25rem;font-weight:600;">Services</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+          <span style="font-size:0.875rem;color:rgba(242,237,232,0.5);">Property for Sale</span>
+          <span style="font-size:0.875rem;color:rgba(242,237,232,0.5);">HMO Properties</span>
+          <span style="font-size:0.875rem;color:rgba(242,237,232,0.5);">Service Accommodation</span>
+        </div>
+        <div style="display:flex;gap:0.625rem;">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6">
+      <p style="font-size:0.75rem;color:rgba(242,237,232,0.25);">
+        &copy; 2024 Staged Ready. All rights reserved.
+      </p>
+      <p style="font-size:0.75rem;color:rgba(242,237,232,0.2);">
+        Property Staging Specialists — West Midlands, UK
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LIGHTBOX
+═══════════════════════════════════════════════════════════ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+  <button id="lightbox-close" aria-label="Close lightbox">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1 1l14 14M15 1L1 15"/></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════════════════ -->
+<script>
+// ─── Enable scroll animations (progressive enhancement) ───
+document.body.classList.add('js-ready');
+
+// ─── Nav scroll state ──────────────────────────────────────
+const nav = document.getElementById('nav');
+const navBrandName = document.getElementById('nav-brand-name');
+const navBrandSub = document.getElementById('nav-brand-sub');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+    if (navBrandName) navBrandName.style.color = '#2D2926';
+    if (navBrandSub) navBrandSub.style.color = 'rgba(74,69,64,0.5)';
+  } else {
+    nav.classList.remove('scrolled');
+    if (navBrandName) navBrandName.style.color = '#F2EDE8';
+    if (navBrandSub) navBrandSub.style.color = 'rgba(242,237,232,0.5)';
+  }
+}, { passive: true });
+
+// ─── Mobile menu toggle ────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const ham1 = document.getElementById('ham-1');
+const ham2 = document.getElementById('ham-2');
+const ham3 = document.getElementById('ham-3');
+let menuOpen = false;
+
+hamburger.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('open', menuOpen);
+  ham1.style.transform = menuOpen ? 'translateY(6px) rotate(45deg)' : '';
+  ham2.style.opacity = menuOpen ? '0' : '1';
+  ham3.style.transform = menuOpen ? 'translateY(-6px) rotate(-45deg)' : '';
+});
+
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    menuOpen = false;
+    mobileMenu.classList.remove('open');
+    ham1.style.transform = '';
+    ham2.style.opacity = '1';
+    ham3.style.transform = '';
+  });
+});
+
+// ─── Parallax hero ─────────────────────────────────────────
+const heroBg = document.getElementById('hero-bg');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  if (heroBg && scrolled < window.innerHeight * 1.5) {
+    heroBg.style.transform = `translateY(${scrolled * 0.42}px)`;
+  }
+}, { passive: true });
+
+// ─── Scroll reveal ─────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  revealObserver.observe(el);
+  if (el.getBoundingClientRect().top < window.innerHeight) {
+    el.classList.add('visible');
+  }
+});
+
+// ─── Counter animation ─────────────────────────────────────
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 2200;
+  el.textContent = '0' + suffix; // reset before animating
+  const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(eased * target);
+    el.textContent = value + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+// ─── Magnetic buttons ──────────────────────────────────────
+document.querySelectorAll('.btn-magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.28;
+    const dy = (e.clientY - cy) * 0.28;
+    btn.style.transform = `translate(${dx}px, ${dy}px)`;
+    btn.style.transition = 'transform 0.1s ease';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = 'translate(0, 0)';
+    btn.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+  });
+});
+
+// ─── Gallery Filter ────────────────────────────────────────
+const filterTabs = document.querySelectorAll('.filter-tab');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+// Hide all items by default (no blank spaces)
+galleryItems.forEach(item => {
+  item.style.display = 'none';
+});
+
+filterTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    filterTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    galleryItems.forEach(item => {
+      if (item.dataset.category === filter) {
+        item.style.display = 'block';
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.96)';
+        requestAnimationFrame(() => {
+          item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          item.style.opacity = '1';
+          item.style.transform = 'scale(1)';
+        });
+      } else {
+        item.style.transition = '';
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ─── Lightbox ──────────────────────────────────────────────
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const src = item.dataset.full;
+    if (src) {
+      lightboxImg.src = src;
+      lightboxImg.alt = item.querySelector('img')?.alt || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      item.click();
+    }
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+// ─── Smooth scroll for anchor links ───────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
