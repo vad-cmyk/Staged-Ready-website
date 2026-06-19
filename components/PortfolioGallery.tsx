@@ -129,8 +129,8 @@ export default function PortfolioGallery() {
   const showHeading = projects.length === 0;
   return (
     <>
-      {showHeading && (
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {showHeading && (
           <div>
             <p className="section-label reveal">Our Work</p>
             <h2
@@ -150,20 +150,20 @@ export default function PortfolioGallery() {
               Transformed
             </h2>
           </div>
-          {/* Filter tabs */}
-          <div className="flex flex-wrap gap-2 reveal" style={{ transitionDelay: '0.2s' }} id="filter-tabs">
-            <button className="filter-tab" data-filter="sale">
-              For Sale
-            </button>
-            <button className="filter-tab" data-filter="hmo">
-              HMO
-            </button>
-            <button className="filter-tab" data-filter="sa">
-              Serviced Acc.
-            </button>
-          </div>
+        )}
+        {/* Filter tabs */}
+        <div className="flex flex-wrap gap-2 reveal" style={{ transitionDelay: '0.2s' }} id="filter-tabs">
+          <button className="filter-tab" data-filter="sale">
+            For Sale
+          </button>
+          <button className="filter-tab" data-filter="hmo">
+            HMO
+          </button>
+          <button className="filter-tab" data-filter="sa">
+            Serviced Acc.
+          </button>
         </div>
-      )}
+      </div>
 
       {/* Gallery Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="gallery-grid">
