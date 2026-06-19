@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { SITE } from '@/data/site';
 
 export default function Header() {
+  const phoneAriaLabel = `Call Staged Ready on ${SITE.phoneDisplay}`;
+
   return (
     <nav id="nav" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
@@ -49,7 +51,7 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-5">
           <a
             href={SITE.phoneHref}
-            aria-label={`Call Staged Ready on ${SITE.phoneDisplay}`}
+            aria-label={phoneAriaLabel}
             className="nav-link flex items-center gap-2"
             style={{ fontVariantNumeric: 'tabular-nums' }}
           >
@@ -67,7 +69,7 @@ export default function Header() {
         <div className="md:hidden flex items-center gap-1">
           <a
             href={SITE.phoneHref}
-            aria-label={`Call Staged Ready on ${SITE.phoneDisplay}`}
+            aria-label={phoneAriaLabel}
             className="flex items-center justify-center"
             style={{ width: '44px', height: '44px', color: '#F2EDE8' }}
           >
@@ -96,7 +98,7 @@ export default function Header() {
         <a href="/#contact" className="nav-link" role="menuitem">Contact</a>
         <a
           href={SITE.phoneHref}
-          aria-label={`Call Staged Ready on ${SITE.phoneDisplay}`}
+          aria-label={phoneAriaLabel}
           className="nav-link"
           role="menuitem"
         >
