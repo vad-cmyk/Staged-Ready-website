@@ -11,3 +11,8 @@ claude:skills:*/
 CLAUDE.md
 serve.mjs
 screenshot.mjs
+
+# Next.js
+.next/
+node_modules/
+next-env.d.ts
