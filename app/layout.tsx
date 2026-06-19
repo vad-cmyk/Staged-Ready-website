@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import SiteInteractions from '@/components/SiteInteractions';
 
 export const metadata: Metadata = {
   title: 'Staged Ready — Professional Property Staging',
@@ -14,7 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" type="image/jpeg" href="/brand_assets/Staged%20ready.jpeg" />
       </head>
-      <body>{children}</body>
+      <body>
+        <SiteInteractions />
+        {children}
+      </body>
     </html>
   );
 }
