@@ -488,4 +488,7 @@ body {
 }
 
 /* ─── Contact section links (originally inline onmouseover/onmouseout in index.html) ─── */
-.contact-link:hover { color: #C9A96E !important; }
+.contact-link:hover,
+.contact-link:focus-visible {
+  color: #C9A96E !important;
+}
