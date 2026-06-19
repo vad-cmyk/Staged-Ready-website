@@ -1,3 +1,5 @@
+import { projects } from '@/data/projects';
+
 type GalleryItem = {
   category: string;
   full: string;
@@ -124,42 +126,44 @@ function GalleryOverlayIcon() {
 }
 
 export default function PortfolioGallery() {
+  const showHeading = projects.length === 0;
   return (
     <>
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div>
-          <p className="section-label reveal">Our Work</p>
-          <h2
-            className="font-display reveal"
-            style={{
-              fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
-              fontWeight: 300,
-              letterSpacing: '-0.03em',
-              lineHeight: 1.05,
-              color: '#2D2926',
-              marginTop: '0.75rem',
-              transitionDelay: '0.1s',
-            }}
-          >
-            Spaces <em style={{ fontStyle: 'italic' }}>We&apos;ve</em>
-            <br />
-            Transformed
-          </h2>
+      {showHeading && (
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <p className="section-label reveal">Our Work</p>
+            <h2
+              className="font-display reveal"
+              style={{
+                fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
+                fontWeight: 300,
+                letterSpacing: '-0.03em',
+                lineHeight: 1.05,
+                color: '#2D2926',
+                marginTop: '0.75rem',
+                transitionDelay: '0.1s',
+              }}
+            >
+              Spaces <em style={{ fontStyle: 'italic' }}>We&apos;ve</em>
+              <br />
+              Transformed
+            </h2>
+          </div>
+          {/* Filter tabs */}
+          <div className="flex flex-wrap gap-2 reveal" style={{ transitionDelay: '0.2s' }} id="filter-tabs">
+            <button className="filter-tab" data-filter="sale">
+              For Sale
+            </button>
+            <button className="filter-tab" data-filter="hmo">
+              HMO
+            </button>
+            <button className="filter-tab" data-filter="sa">
+              Serviced Acc.
+            </button>
+          </div>
         </div>
-        {/* Filter tabs */}
-        <div className="flex flex-wrap gap-2 reveal" style={{ transitionDelay: '0.2s' }} id="filter-tabs">
-          <button className="filter-tab" data-filter="sale">
-            For Sale
-          </button>
-          <button className="filter-tab" data-filter="hmo">
-            HMO
-          </button>
-          <button className="filter-tab" data-filter="sa">
-            Serviced Acc.
-          </button>
-        </div>
-      </div>
+      )}
 
       {/* Gallery Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="gallery-grid">

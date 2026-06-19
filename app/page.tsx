@@ -5,6 +5,8 @@ import MarqueeStrip from '@/components/MarqueeStrip';
 import Services from '@/components/Services';
 import PortfolioGallery from '@/components/PortfolioGallery';
 import Process from '@/components/Process';
+import Reviews from '@/components/Reviews';
+import CaseStudies from '@/components/CaseStudies';
 import Contact from '@/components/Contact';
 import Lightbox from '@/components/Lightbox';
 
@@ -18,10 +20,12 @@ export default function HomePage() {
         <Services />
         <section id="portfolio" style={{ background: '#F8F5F1', padding: 'clamp(5rem,10vw,9rem) 0' }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <CaseStudies />
             <PortfolioGallery />
           </div>
         </section>
         <Process />
+        <Reviews />
         <Contact />
       </main>
       <Footer />
