@@ -472,6 +472,15 @@ body {
 .social-link:hover { background: rgba(201,169,110,0.15); color: #C9A96E; border-color: rgba(201,169,110,0.4); }
 .social-link:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
 
+.footer-link {
+  font-size: 0.875rem;
+  color: rgba(242,237,232,0.5);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.footer-link:hover,
+.footer-link:focus-visible { color: #C9A96E; }
+
 /* ─── Hero scroll cue (originally a separate inline <style> in index.html) ─── */
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.5; transform: scaleY(1); }

@@ -1,13 +1,6 @@
 import Link from 'next/link';
 import { SITE } from '@/data/site';
 
-const footerLinkStyle: React.CSSProperties = {
-  fontSize: '0.875rem',
-  color: 'rgba(242,237,232,0.5)',
-  textDecoration: 'none',
-  transition: 'color 0.25s ease',
-};
-
 export default function Footer() {
   return (
     <footer style={{ background: '#1E1B18', padding: '4rem 0 2rem' }}>
@@ -42,10 +35,10 @@ export default function Footer() {
               Navigation
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <a href="/#services" style={footerLinkStyle}>Services</a>
-              <a href="/#portfolio" style={footerLinkStyle}>Portfolio</a>
-              <a href="/#process" style={footerLinkStyle}>Process</a>
-              <a href="/#contact" style={footerLinkStyle}>Contact</a>
+              <a href="/#services" className="footer-link">Services</a>
+              <a href="/#portfolio" className="footer-link">Portfolio</a>
+              <a href="/#process" className="footer-link">Process</a>
+              <a href="/#contact" className="footer-link">Contact</a>
             </div>
           </div>
 
@@ -55,12 +48,12 @@ export default function Footer() {
               Services
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
-              <Link href="/home-staging" style={footerLinkStyle}>Property for Sale</Link>
-              <Link href="/hmo-furniture-packages" style={footerLinkStyle}>HMO Furniture Packages</Link>
-              <Link href="/serviced-accommodation-furniture-packages" style={footerLinkStyle}>
+              <Link href="/home-staging" className="footer-link">Property for Sale</Link>
+              <Link href="/hmo-furniture-packages" className="footer-link">HMO Furniture Packages</Link>
+              <Link href="/serviced-accommodation-furniture-packages" className="footer-link">
                 Serviced Accommodation Furniture Packages
               </Link>
-              <Link href="/developer-home-staging" style={footerLinkStyle}>Property Developers</Link>
+              <Link href="/developer-home-staging" className="footer-link">Property Developers</Link>
             </div>
             <div style={{ display: 'flex', gap: '0.625rem' }}>
               <a href="https://www.instagram.com/stagedready/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
