@@ -486,3 +486,6 @@ body {
   0%, 100% { opacity: 0.5; transform: scaleY(1); }
   50% { opacity: 1; transform: scaleY(1.15); }
 }
+
+/* ─── Contact section links (originally inline onmouseover/onmouseout in index.html) ─── */
+.contact-link:hover { color: #C9A96E !important; }

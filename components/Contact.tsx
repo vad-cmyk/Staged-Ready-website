@@ -1,0 +1,168 @@
+import { SITE } from '@/data/site';
+
+export default function Contact() {
+  return (
+    <section id="contact" className="relative grain" style={{ background: '#2D2926', padding: 'clamp(6rem,12vw,10rem) 0', overflow: 'hidden' }}>
+      {/* Background radial glows */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '600px',
+          height: '400px',
+          background: 'radial-gradient(ellipse at 0% 0%, rgba(201,169,110,0.15) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          width: '500px',
+          height: '400px',
+          background: 'radial-gradient(ellipse at 100% 100%, rgba(201,169,110,0.08) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div className="max-w-5xl mx-auto px-6 lg:px-10 text-center relative z-10">
+        <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.7)' }}>
+          Get Started
+        </p>
+        <h2
+          className="font-display reveal"
+          style={{
+            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+            fontWeight: 300,
+            letterSpacing: '-0.03em',
+            lineHeight: 1,
+            color: '#F2EDE8',
+            marginTop: '0.75rem',
+            marginBottom: '1.5rem',
+            transitionDelay: '0.1s',
+          }}
+        >
+          Ready to Stage Your
+          <br />
+          <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Next Property?</em>
+        </h2>
+        <p
+          className="reveal"
+          style={{
+            fontSize: 'clamp(0.9375rem,2vw,1.125rem)',
+            lineHeight: 1.75,
+            color: 'rgba(242,237,232,0.6)',
+            maxWidth: '45ch',
+            margin: '0 auto 2.5rem',
+            transitionDelay: '0.2s',
+          }}
+        >
+          Tell us about your property and we&apos;ll provide a free staging consultation and proposal tailored
+          to your goals.
+        </p>
+
+        <div className="reveal" style={{ transitionDelay: '0.3s' }}>
+          <a href={`mailto:${SITE.email}`} className="btn-dark btn-magnetic" style={{ fontSize: '0.875rem', padding: '1.125rem 3rem' }}>
+            Book a Free Consultation
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2 8h12M8 2l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Contact details below */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-14 reveal" style={{ transitionDelay: '0.4s' }}>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="contact-link"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.625rem',
+              fontSize: '0.875rem',
+              color: 'rgba(242,237,232,0.5)',
+              textDecoration: 'none',
+              transition: 'color 0.25s ease',
+            }}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            {SITE.email}
+          </a>
+          <div style={{ width: '1px', height: '1.25rem', background: 'rgba(242,237,232,0.15)', display: 'none' }} className="sm:block" />
+          <a
+            href={SITE.phoneHref}
+            className="contact-link"
+            aria-label={`Call Staged Ready on ${SITE.phoneDisplay}`}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.625rem',
+              fontSize: '0.875rem',
+              color: 'rgba(242,237,232,0.5)',
+              textDecoration: 'none',
+              transition: 'color 0.25s ease',
+            }}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.87h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            {SITE.phoneDisplay}
+          </a>
+          <div style={{ width: '1px', height: '1.25rem', background: 'rgba(242,237,232,0.15)', display: 'none' }} className="sm:block" />
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontSize: '0.875rem', color: 'rgba(242,237,232,0.5)' }}>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            {SITE.location}
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}
