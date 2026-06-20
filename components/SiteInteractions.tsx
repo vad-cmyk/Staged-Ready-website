@@ -144,7 +144,7 @@ export default function SiteInteractions() {
     });
 
     // ─── Gallery filter ─────────────────────────────────────
-    const filterTabs = document.querySelectorAll('.filter-tab');
+    const filterTabs = document.querySelectorAll('#filter-tabs .filter-tab');
     const galleryItems = document.querySelectorAll('.gallery-item');
     galleryItems.forEach((item) => {
       (item as HTMLElement).style.display = 'none';
