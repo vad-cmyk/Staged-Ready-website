@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SITE } from '@/data/site';
+import PhoneIcon from '@/components/icons/PhoneIcon';
 
 export default function Header() {
   const phoneAriaLabel = `Call Staged Ready on ${SITE.phoneDisplay}`;
@@ -55,9 +56,7 @@ export default function Header() {
             className="nav-link flex items-center gap-2"
             style={{ fontVariantNumeric: 'tabular-nums' }}
           >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.87h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
+            <PhoneIcon size={15} stroke="currentColor" strokeWidth={1.75} />
             {SITE.phoneDisplay}
           </a>
           <a href="/#contact" className="btn-primary btn-magnetic" style={{ padding: '0.65rem 1.75rem', fontSize: '0.75rem' }}>
@@ -73,9 +72,7 @@ export default function Header() {
             className="flex items-center justify-center"
             style={{ width: '44px', height: '44px', color: '#F2EDE8' }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.87h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
+            <PhoneIcon size={20} stroke="currentColor" strokeWidth={1.75} />
           </a>
           <button
             id="hamburger"
