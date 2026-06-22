@@ -43,7 +43,12 @@ export default function Services() {
         {/* 3-column card grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {/* Card 1: For Sale */}
-          <div className="service-card reveal stagger" style={{ transitionDelay: '0s' }}>
+          <Link
+            href="/home-staging"
+            className="service-card reveal stagger group"
+            style={{ transitionDelay: '0s' }}
+            aria-label="Property for Sale — learn more about home staging"
+          >
             <div className="service-card-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand_assets/IMG_0566.JPG" alt="Elegantly staged bedroom for property sale" loading="lazy" />
@@ -71,8 +76,7 @@ export default function Services() {
                 First impressions sell properties. We stage your home to create an emotional connection with
                 buyers — helping you achieve a faster sale and the best possible price.
               </p>
-              <Link
-                href="/home-staging"
+              <span
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -82,9 +86,7 @@ export default function Services() {
                   textTransform: 'uppercase',
                   color: '#C9A96E',
                   fontWeight: 600,
-                  textDecoration: 'none',
                 }}
-                className="group"
               >
                 <span>Learn More</span>
                 <svg
@@ -102,12 +104,17 @@ export default function Services() {
                 >
                   <path d="M1 6h10M6 1l5 5-5 5" />
                 </svg>
-              </Link>
+              </span>
             </div>
-          </div>
+          </Link>
 
           {/* Card 2: HMO */}
-          <div className="service-card reveal stagger" style={{ transitionDelay: '0.1s', marginTop: '2rem' }}>
+          <Link
+            href="/hmo-furniture-packages"
+            className="service-card reveal stagger group"
+            style={{ transitionDelay: '0.1s', marginTop: '2rem' }}
+            aria-label="HMO Furniture Packages — learn more"
+          >
             <div className="service-card-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand_assets/IMG_0503.JPG" alt="Staged HMO twin bedroom with high-quality furnishings" loading="lazy" />
@@ -135,8 +142,7 @@ export default function Services() {
                 Attract quality long-term tenants to your House in Multiple Occupation. Our staging creates
                 welcoming, functional rooms that command premium rents and reduce voids.
               </p>
-              <Link
-                href="/hmo-furniture-packages"
+              <span
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -146,9 +152,7 @@ export default function Services() {
                   textTransform: 'uppercase',
                   color: '#C9A96E',
                   fontWeight: 600,
-                  textDecoration: 'none',
                 }}
-                className="group"
               >
                 <span>Learn More</span>
                 <svg
@@ -166,12 +170,17 @@ export default function Services() {
                 >
                   <path d="M1 6h10M6 1l5 5-5 5" />
                 </svg>
-              </Link>
+              </span>
             </div>
-          </div>
+          </Link>
 
           {/* Card 3: Service Accommodation Furniture Packages */}
-          <div className="service-card reveal stagger" style={{ transitionDelay: '0.2s' }}>
+          <Link
+            href="/serviced-accommodation-furniture-packages"
+            className="service-card reveal stagger group"
+            style={{ transitionDelay: '0.2s' }}
+            aria-label="Service Accommodation Furniture Packages — learn more"
+          >
             <div className="service-card-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand_assets/IMG_1599.jpg" alt="Staged luxury kitchen for service accommodation" loading="lazy" />
@@ -199,8 +208,7 @@ export default function Services() {
                 Maximise occupancy rates and guest reviews for your holiday or short-let property. We create
                 spaces that look stunning in listings and deliver exceptional guest experiences.
               </p>
-              <Link
-                href="/serviced-accommodation-furniture-packages"
+              <span
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -210,9 +218,7 @@ export default function Services() {
                   textTransform: 'uppercase',
                   color: '#C9A96E',
                   fontWeight: 600,
-                  textDecoration: 'none',
                 }}
-                className="group"
               >
                 <span>Learn More</span>
                 <svg
@@ -230,9 +236,9 @@ export default function Services() {
                 >
                   <path d="M1 6h10M6 1l5 5-5 5" />
                 </svg>
-              </Link>
+              </span>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </section>

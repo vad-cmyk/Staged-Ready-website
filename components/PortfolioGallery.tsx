@@ -173,7 +173,7 @@ export default function PortfolioGallery() {
             className="gallery-item cursor-gold reveal"
             data-category={item.category}
             style={{
-              height: '240px',
+              height: item.tall ? '100%' : '240px',
               transitionDelay: item.transitionDelay,
               ...(item.tall ? { gridRow: 'span 2' } : {}),
             }}

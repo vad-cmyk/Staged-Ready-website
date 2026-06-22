@@ -144,15 +144,22 @@ export default function SiteInteractions() {
     });
 
     // ─── Gallery filter ─────────────────────────────────────
+    // All items are visible by default (no click required); selecting a
+    // category tab narrows the grid down to just that category. Clicking
+    // the same tab again (toggling it off) restores every item.
     const filterTabs = document.querySelectorAll('#filter-tabs .filter-tab');
     const galleryItems = document.querySelectorAll('.gallery-item');
-    galleryItems.forEach((item) => {
-      (item as HTMLElement).style.display = 'none';
-    });
     filterTabs.forEach((tabEl) => {
       const tab = tabEl as HTMLElement;
       const onTabClick = () => {
+        const alreadyActive = tab.classList.contains('active');
         filterTabs.forEach((t) => t.classList.remove('active'));
+        if (alreadyActive) {
+          galleryItems.forEach((itemEl) => {
+            (itemEl as HTMLElement).style.display = 'block';
+          });
+          return;
+        }
         tab.classList.add('active');
         const filter = tab.dataset.filter;
         galleryItems.forEach((itemEl) => {
