@@ -45,6 +45,7 @@ export default function Header() {
           <a href="/#services" className="nav-link">Services</a>
           <a href="/#portfolio" className="nav-link">Portfolio</a>
           <a href="/#process" className="nav-link">Process</a>
+          <Link href="/faq" className="nav-link">FAQ</Link>
           <a href="/#contact" className="nav-link">Contact</a>
         </div>
 
@@ -92,6 +93,7 @@ export default function Header() {
         <a href="/#services" className="nav-link" role="menuitem">Services</a>
         <a href="/#portfolio" className="nav-link" role="menuitem">Portfolio</a>
         <a href="/#process" className="nav-link" role="menuitem">Process</a>
+        <Link href="/faq" className="nav-link" role="menuitem">FAQ</Link>
         <a href="/#contact" className="nav-link" role="menuitem">Contact</a>
         <a
           href={SITE.phoneHref}

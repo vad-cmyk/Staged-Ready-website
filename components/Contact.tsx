@@ -45,9 +45,9 @@ export default function Contact() {
             transitionDelay: '0.1s',
           }}
         >
-          Ready to Stage Your
+          Ready to Maximise Your
           <br />
-          <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Next Property?</em>
+          <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Property&apos;s Sale Potential?</em>
         </h2>
         <p
           className="reveal"
@@ -60,13 +60,13 @@ export default function Contact() {
             transitionDelay: '0.2s',
           }}
         >
-          Tell us about your property and we&apos;ll provide a free staging consultation and proposal tailored
-          to your goals.
+          Book a free consultation and we&apos;ll recommend the most effective staging solution for your
+          property.
         </p>
 
         <div className="reveal" style={{ transitionDelay: '0.3s' }}>
           <a href={`mailto:${SITE.email}`} className="btn-dark btn-magnetic" style={{ fontSize: '0.875rem', padding: '1.125rem 3rem' }}>
-            Book a Free Consultation
+            Get My Free Consultation
             <svg
               width="16"
               height="16"

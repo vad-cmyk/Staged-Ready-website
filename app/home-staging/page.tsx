@@ -3,13 +3,14 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Lightbox from '@/components/Lightbox';
 import LandingHero from '@/components/landing/LandingHero';
-import TrustBar from '@/components/landing/TrustBar';
-import ProblemSolution from '@/components/landing/ProblemSolution';
+import SubServices from '@/components/landing/SubServices';
 import Benefits from '@/components/landing/Benefits';
-import ProcessCondensed from '@/components/landing/ProcessCondensed';
-import PortfolioStrip from '@/components/landing/PortfolioStrip';
+import Process from '@/components/Process';
+import Pricing from '@/components/Pricing';
+import WhyChooseStagedReady from '@/components/WhyChooseStagedReady';
+import Founder from '@/components/Founder';
 import Reviews from '@/components/Reviews';
-import FAQAccordion from '@/components/landing/FAQAccordion';
+import FAQSection from '@/components/FAQSection';
 import FinalCTA from '@/components/landing/FinalCTA';
 
 export const metadata: Metadata = {
@@ -31,68 +32,50 @@ export default function HomeStagingPage() {
       <main>
         <LandingHero
           eyebrow="Home Staging Specialists"
-          heading={<>Professional Home Staging<br />in <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Norwich &amp; Norfolk</em></>}
+          heading={<>Home Staging for Properties<br />for Sale — <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Norfolk &amp; East Anglia</em></>}
           subhead="We stage your property so buyers can picture themselves living there — creating stronger emotional connection, more viewings, and a faster sale at a better price."
-          ctaLabel="Book a Free Consultation"
+          ctaLabel="Get a free staging quote"
           ctaHref="#contact"
           heroImage="/brand_assets/IMG_1601.jpg"
         />
-        <TrustBar
-          stats={[
-            { value: '10+', label: 'Properties Staged' },
-            { value: '73%', label: 'Less Time on Market' },
-            { value: '63%', label: 'Of Buyers Pay More' },
-            { value: '90%', label: "Can't Visualise an Empty Space" },
-          ]}
-        />
-        <ProblemSolution
-          eyebrow="Why Staging Matters"
-          heading={<>Empty Rooms Don&apos;t <em style={{ fontStyle: 'italic' }}>Sell Themselves</em></>}
-          pairs={[
+        <SubServices
+          eyebrow="What We Offer"
+          heading={<>Property <em style={{ fontStyle: 'italic' }}>for Sale</em></>}
+          items={[
             {
-              problem: 'Buyers struggle to picture an empty or dated room as their future home, and scroll past listing photos that fail to create an emotional pull.',
-              solution: 'We dress every room with furniture and styling chosen to flatter the space, photograph beautifully, and let buyers picture their own life there.',
+              title: 'Vacant Property Staging',
+              description: 'Full furnishing and styling of empty properties so buyers can instantly picture themselves living there.',
             },
             {
-              problem: 'Unstaged properties often sit on the market longer, racking up costs and losing momentum with every price drop.',
-              solution: 'Staged Ready properties sell faster on average — strong first impressions generate more viewings and offers in the critical first weeks.',
+              title: 'Show Home Staging',
+              description: 'Aspirational, magazine-standard staging for new-build show homes and development launches.',
             },
             {
-              problem: 'Buyers anchor their offer to what they see — an empty or cluttered property can quietly undervalue itself.',
-              solution: 'Strategic staging highlights a property’s strengths and proportions, supporting a higher achieved sale price.',
-            },
-            {
-              problem: "You don't want to buy and store furniture you'll never use again after the sale.",
-              solution: 'We supply, install, and later collect everything — a fully managed, no-hassle service from consultation to final removal.',
+              title: 'Occupied Property Staging',
+              description: 'Editing and restyling existing furniture to present a lived-in home at its absolute best for sale.',
             },
           ]}
         />
         <Benefits
-          eyebrow="Why Staged Ready"
-          heading={<>Staging Built Around <em style={{ fontStyle: 'italic' }}>Financial Return</em></>}
+          eyebrow="Why Stage?"
+          heading={<>The Case for <em style={{ fontStyle: 'italic' }}>Staging</em></>}
           items={[
-            { title: 'Strategic, Not Decorative', description: 'Every furniture and styling decision is made to maximise perceived value and buyer appeal — not just to look nice.' },
-            { title: 'Faster Sales', description: 'Staged properties typically spend significantly less time on the market than unstaged comparables.' },
-            { title: 'Stronger Offers', description: 'A well-presented home supports higher buyer valuations and reduces the risk of lowball offers.' },
-            { title: 'Fully Managed', description: 'From consultation to design, delivery, installation, and collection — we handle the entire process.' },
+            { title: 'Higher price', description: 'Strategic staging can achieve a significantly higher sale price than an identical non-staged property.' },
+            { title: 'Quicker sale', description: 'Staging creates instant demand, generating more offers and ultimately a faster sale.' },
+            { title: 'More views online', description: 'Standout photos drive higher click-through rates on portals like Rightmove.' },
+            { title: 'More views in person', description: 'Demand and competition mean more viewings and stronger offers.' },
           ]}
         />
-        <ProcessCondensed heading={<>From Consultation to <em style={{ fontStyle: 'italic' }}>Sold</em></>} />
-        <PortfolioStrip propertyType="sale" />
+        <Process />
+        <Pricing highlight="sale" />
+        <WhyChooseStagedReady />
+        <Founder />
         <Reviews filterService="sale" />
-        <FAQAccordion
-          heading={<>Common <em style={{ fontStyle: 'italic' }}>Questions</em></>}
-          items={[
-            { question: 'What is home staging?', answer: 'Home staging is the strategic furnishing and styling of a property to present it at its best to potential buyers — helping them connect emotionally with the space and picture themselves living there, which supports faster sales and stronger offers.' },
-            { question: 'How much does home staging cost, and how is it priced?', answer: "Pricing depends on the property's size, the number of rooms staged, and how long the furniture stays in place. We provide a tailored, no-obligation quote after a free consultation, so you know the exact cost before committing." },
-            { question: 'How long does staging take?', answer: 'Most properties are fully staged within a few days of the consultation and design plan being agreed, depending on furniture availability and access to the property.' },
-            { question: 'Do you supply all the furniture?', answer: 'Yes — we supply, deliver, and install every piece of furniture, soft furnishings, and styling accessories needed, and collect everything once the staging period ends.' },
-            { question: 'Which areas do you cover?', answer: 'We are based in Norwich and cover Norfolk and the surrounding areas. Get in touch with your property location and we will confirm coverage.' },
-          ]}
-        />
+        <FAQSection category="sale" />
         <FinalCTA
-          heading={<>Ready to Stage Your<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Property?</em></>}
-          subhead="Tell us about your property and we'll provide a free staging consultation and proposal tailored to your goals."
+          heading={<>Ready to Maximise Your<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Property&apos;s Sale Potential?</em></>}
+          subhead="Book a free consultation and we'll recommend the most effective staging solution for your property."
+          ctaLabel="Get My Free Consultation"
         />
       </main>
       <Footer />

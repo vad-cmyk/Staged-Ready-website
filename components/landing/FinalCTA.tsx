@@ -1,7 +1,15 @@
 import { SITE } from '@/data/site';
 import PhoneIcon from '@/components/icons/PhoneIcon';
 
-export default function FinalCTA({ heading, subhead }: { heading: React.ReactNode; subhead: string }) {
+export default function FinalCTA({
+  heading,
+  subhead,
+  ctaLabel = 'Book a Free Consultation',
+}: {
+  heading: React.ReactNode;
+  subhead: string;
+  ctaLabel?: string;
+}) {
   return (
     <section id="contact" className="relative grain" style={{ background: '#2D2926', padding: 'clamp(6rem,12vw,10rem) 0', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, width: '600px', height: '400px', background: 'radial-gradient(ellipse at 0% 0%, rgba(201,169,110,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -15,7 +23,7 @@ export default function FinalCTA({ heading, subhead }: { heading: React.ReactNod
         </p>
         <div className="reveal flex flex-wrap items-center justify-center gap-5">
           <a href={`mailto:${SITE.email}`} className="btn-dark btn-magnetic" style={{ fontSize: '0.875rem', padding: '1.125rem 3rem' }}>
-            Book a Free Consultation
+            {ctaLabel}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M2 8h12M8 2l6 6-6 6" />
             </svg>

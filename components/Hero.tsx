@@ -37,13 +37,12 @@ export default function Hero() {
               transitionDelay: '0.1s',
             }}
           >
-            Transform Your
+            Professional Home Staging
             <br />
-            Property.
+            Across Norfolk &amp; East Anglia
             <br />
-            <em style={{ fontStyle: 'italic', fontWeight: 300, color: '#DFC08A' }}>Maximise</em> Your
-            <br />
-            Returns.
+            — Designed to Help Properties{' '}
+            <em style={{ fontStyle: 'italic', fontWeight: 300, color: '#DFC08A' }}>Sell Faster</em>.
           </h1>
 
           <p
@@ -63,8 +62,8 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4 reveal stagger" style={{ transitionDelay: '0.3s' }}>
-            <a href="#services" className="btn-primary btn-magnetic">
-              Our Services
+            <a href="#contact" className="btn-primary btn-magnetic">
+              Get a free staging quote
               <svg
                 width="14"
                 height="14"
