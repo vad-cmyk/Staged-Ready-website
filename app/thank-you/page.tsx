@@ -45,7 +45,7 @@ export default function ThankYouPage() {
       </main>
       <Footer />
       <Script id="ads-conversion" strategy="afterInteractive">
-        {`if (typeof window.gtag === 'function') { window.gtag('event', 'conversion', { send_to: 'AW-18275103746' }); }`}
+        {`if (typeof window.gtag === 'function') { window.gtag('event', 'conversion', { send_to: 'AW-18275103746/C91xCNu-k8YcEILon4pE' }); }`}
       </Script>
     </>
   );
