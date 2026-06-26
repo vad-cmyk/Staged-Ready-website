@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import SiteInteractions from '@/components/SiteInteractions';
 
@@ -14,6 +15,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <link rel="icon" type="image/jpeg" href="/brand_assets/Staged%20ready.jpeg" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-18275103746" strategy="beforeInteractive" />
+        <Script id="google-tag-init" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-18275103746');`}
+        </Script>
       </head>
       <body>
         <SiteInteractions />
