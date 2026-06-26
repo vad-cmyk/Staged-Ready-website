@@ -1,14 +1,13 @@
 import { SITE } from '@/data/site';
 import PhoneIcon from '@/components/icons/PhoneIcon';
+import ContactForm from '@/components/ContactForm';
 
 export default function FinalCTA({
   heading,
   subhead,
-  ctaLabel = 'Book a Free Consultation',
 }: {
   heading: React.ReactNode;
   subhead: string;
-  ctaLabel?: string;
 }) {
   return (
     <section id="contact" className="relative grain" style={{ background: '#2D2926', padding: 'clamp(6rem,12vw,10rem) 0', overflow: 'hidden' }}>
@@ -21,18 +20,18 @@ export default function FinalCTA({
         <p className="reveal" style={{ fontSize: 'clamp(0.9375rem,2vw,1.125rem)', lineHeight: 1.75, color: 'rgba(242,237,232,0.6)', maxWidth: '45ch', margin: '0 auto 2.5rem' }}>
           {subhead}
         </p>
-        <div className="reveal flex flex-wrap items-center justify-center gap-5">
-          <a href={`mailto:${SITE.email}`} className="btn-dark btn-magnetic" style={{ fontSize: '0.875rem', padding: '1.125rem 3rem' }}>
-            {ctaLabel}
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M2 8h12M8 2l6 6-6 6" />
-            </svg>
-          </a>
-          <a href={SITE.phoneHref} aria-label={`Call Staged Ready on ${SITE.phoneDisplay}`} style={{ color: '#F2EDE8', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-            <PhoneIcon size={16} stroke="#DFC08A" strokeWidth={1.5} />
-            {SITE.phoneDisplay}
-          </a>
+        <div className="reveal">
+          <ContactForm dark />
         </div>
+        <a
+          href={SITE.phoneHref}
+          aria-label={`Call Staged Ready on ${SITE.phoneDisplay}`}
+          className="reveal"
+          style={{ marginTop: '2rem', color: '#F2EDE8', fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
+        >
+          <PhoneIcon size={16} stroke="#DFC08A" strokeWidth={1.5} />
+          {SITE.phoneDisplay}
+        </a>
       </div>
     </section>
   );

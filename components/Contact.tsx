@@ -1,5 +1,6 @@
 import { SITE } from '@/data/site';
 import PhoneIcon from '@/components/icons/PhoneIcon';
+import ContactForm from '@/components/ContactForm';
 
 export default function Contact() {
   return (
@@ -65,22 +66,7 @@ export default function Contact() {
         </p>
 
         <div className="reveal" style={{ transitionDelay: '0.3s' }}>
-          <a href={`mailto:${SITE.email}`} className="btn-dark btn-magnetic" style={{ fontSize: '0.875rem', padding: '1.125rem 3rem' }}>
-            Get My Free Consultation
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M2 8h12M8 2l6 6-6 6" />
-            </svg>
-          </a>
+          <ContactForm dark />
         </div>
 
         {/* Contact details below */}

@@ -75,7 +75,6 @@ export default function HomeStagingPage() {
         <FinalCTA
           heading={<>Ready to Maximise Your<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Property&apos;s Sale Potential?</em></>}
           subhead="Book a free consultation and we'll recommend the most effective staging solution for your property."
-          ctaLabel="Get My Free Consultation"
         />
       </main>
       <Footer />
