@@ -13,8 +13,8 @@ export async function POST(request: NextRequest) {
     message?: string;
   };
 
-  if (!name || !email) {
-    return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 });
+  if (!name || !email || !phone || !service || !message) {
+    return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
   }
 
   const toEmail = process.env.CONTACT_TO_EMAIL || 'hello@stagedready.com';

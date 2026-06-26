@@ -80,12 +80,12 @@ export default function ContactForm({ dark = true }: { dark?: boolean }) {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
         <div>
-          <label htmlFor="contact-phone" style={labelStyle}>Phone (optional)</label>
-          <input id="contact-phone" name="phone" type="tel" style={inputStyle} />
+          <label htmlFor="contact-phone" style={labelStyle}>Phone</label>
+          <input id="contact-phone" name="phone" type="tel" required style={inputStyle} />
         </div>
         <div>
           <label htmlFor="contact-service" style={labelStyle}>Service</label>
-          <select id="contact-service" name="service" style={inputStyle}>
+          <select id="contact-service" name="service" required style={inputStyle}>
             <option value="Property for Sale">Property for Sale</option>
             <option value="HMO">HMO Furniture Package</option>
             <option value="Serviced Accommodation">Serviced Accommodation</option>
@@ -94,8 +94,8 @@ export default function ContactForm({ dark = true }: { dark?: boolean }) {
         </div>
       </div>
       <div style={{ marginBottom: '1.5rem' }}>
-        <label htmlFor="contact-message" style={labelStyle}>Message (optional)</label>
-        <textarea id="contact-message" name="message" rows={4} style={{ ...inputStyle, resize: 'vertical' }} />
+        <label htmlFor="contact-message" style={labelStyle}>Message</label>
+        <textarea id="contact-message" name="message" rows={4} required style={{ ...inputStyle, resize: 'vertical' }} />
       </div>
 
       {status === 'error' && (
