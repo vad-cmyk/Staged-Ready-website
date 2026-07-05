@@ -15,14 +15,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <link rel="icon" type="image/jpeg" href="/brand_assets/Staged%20ready.jpeg" />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-18275103746" strategy="beforeInteractive" />
-        <Script id="google-tag-init" strategy="beforeInteractive">
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-18275103746" strategy="afterInteractive" />
+        <Script id="google-tag-init" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'AW-18275103746');`}
         </Script>
-        <Script id="google-tag-request-quote-conversion" strategy="beforeInteractive">
+        <Script id="google-tag-request-quote-conversion" strategy="afterInteractive">
           {`function gtag_report_conversion(url) {
             var callback = function () {
               if (typeof(url) != 'undefined') {
