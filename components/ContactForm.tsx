@@ -2,12 +2,6 @@
 
 import { useState } from 'react';
 
-declare global {
-  interface Window {
-    gtag_report_conversion?: (url?: string) => boolean;
-  }
-}
-
 export default function ContactForm({ dark = true }: { dark?: boolean }) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -43,11 +37,7 @@ export default function ContactForm({ dark = true }: { dark?: boolean }) {
         throw new Error(data.error || 'Something went wrong. Please try again.');
       }
 
-      if (typeof window.gtag_report_conversion === 'function') {
-        window.gtag_report_conversion('/thank-you');
-      } else {
-        window.location.href = '/thank-you';
-      }
+      window.location.href = '/thank-you';
     } catch (err) {
       setStatus('error');
       setErrorMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.');

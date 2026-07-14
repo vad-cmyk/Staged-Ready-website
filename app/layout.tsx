@@ -22,22 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('js', new Date());
           gtag('config', 'AW-18275103746');`}
         </Script>
-        <Script id="google-tag-request-quote-conversion" strategy="afterInteractive">
-          {`function gtag_report_conversion(url) {
-            var callback = function () {
-              if (typeof(url) != 'undefined') {
-                window.location = url;
-              }
-            };
-            gtag('event', 'conversion', {
-                'send_to': 'AW-18275103746/C91xCNu-k8YcEILon4pE',
-                'value': 1.0,
-                'currency': 'GBP',
-                'event_callback': callback
-            });
-            return false;
-          }`}
-        </Script>
       </head>
       <body>
         <SiteInteractions />
