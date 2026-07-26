@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Script from 'next/script';
+import ConversionTracker from '@/components/ConversionTracker';
 import { SITE } from '@/data/site';
 
 export const metadata: Metadata = {
@@ -44,9 +44,7 @@ export default function ThankYouPage() {
         </section>
       </main>
       <Footer />
-      <Script id="ads-conversion" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || []; window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); }; gtag('event', 'conversion', { send_to: 'AW-18275103746/C91xCNu-k8YcEILon4pE' });`}
-      </Script>
+      <ConversionTracker />
     </>
   );
 }
