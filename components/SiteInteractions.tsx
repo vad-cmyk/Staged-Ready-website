@@ -222,6 +222,24 @@ export default function SiteInteractions() {
     };
     on(document, 'keydown', onEscape);
 
+    // ─── GA4 click events ──────────────────────────────────
+    const track = (name: string, params?: Record<string, string>) => {
+      const w = window as any;
+      w.dataLayer = w.dataLayer || [];
+      const fn: (...args: any[]) => void =
+        typeof w.gtag === 'function' ? w.gtag : (...a) => w.dataLayer.push(a);
+      fn('event', name, params);
+    };
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="tel:"]').forEach((el) => {
+      on(el, 'click', () => track('phone_click', { link_url: el.href }));
+    });
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="mailto:"]').forEach((el) => {
+      on(el, 'click', () => track('email_click', { link_url: el.href }));
+    });
+    document.querySelectorAll<HTMLAnchorElement>('a.btn-primary, a.btn-outline').forEach((el) => {
+      on(el, 'click', () => track('cta_click', { cta_text: el.innerText.trim() }));
+    });
+
     // ─── Smooth scroll for in-page anchor links ────────────
     document.querySelectorAll('a[href^="#"]').forEach((aEl) => {
       const a = aEl as HTMLAnchorElement;
