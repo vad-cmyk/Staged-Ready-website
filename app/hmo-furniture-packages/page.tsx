@@ -15,12 +15,15 @@ import FinalCTA from '@/components/landing/FinalCTA';
 export const metadata: Metadata = {
   title: 'HMO Furniture Packages for Landlords | Staged Ready',
   description: 'Durable, compliant HMO furniture packages for landlords and investors in Norfolk. Command premium rents, attract quality tenants, and reduce voids.',
-  alternates: { canonical: 'https://stagedready.com/hmo-furniture-packages' },
+  alternates: { canonical: '/hmo-furniture-packages' },
   openGraph: {
+    siteName: 'Staged Ready',
+    locale: 'en_GB',
+    type: 'website',
     title: 'HMO Furniture Packages for Landlords',
     description: 'Durable, compliant furniture packages that command premium rents and reduce voids.',
-    url: 'https://stagedready.com/hmo-furniture-packages',
-    images: ['/brand_assets/IMG_1741.jpeg'],
+    url: '/hmo-furniture-packages',
+    images: ['/opengraph-image.jpg'],
   },
 };
 
@@ -28,7 +31,7 @@ export default function HmoFurniturePackagesPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <LandingHero
           eyebrow="For HMO Landlords & Investors"
           heading={<>HMO Furniture Packages<br />for <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Landlords</em></>}

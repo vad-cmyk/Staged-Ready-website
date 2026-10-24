@@ -1,7 +1,18 @@
+import Image from 'next/image';
+
 export default function Hero() {
   return (
     <section id="hero" className="grain relative">
-      <div className="hero-bg" id="hero-bg" />
+      <div className="hero-bg" id="hero-bg">
+        <Image
+          src="/brand_assets/IMG_1601.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+        />
+      </div>
       <div className="hero-overlay" />
       <div className="hero-tint" />
       <div className="hero-glow" />
@@ -26,7 +37,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="font-display reveal"
+            className="font-display"
             style={{
               fontSize: 'clamp(3rem, 7vw, 6.25rem)',
               fontWeight: 300,
@@ -91,7 +102,7 @@ export default function Hero() {
             <div>
               <p
                 style={{
-                  fontFamily: "'Cormorant Garamond',serif",
+                  fontFamily: 'var(--font-display), Georgia, serif',
                   fontSize: '1.75rem',
                   fontWeight: 300,
                   lineHeight: 1,
@@ -106,7 +117,7 @@ export default function Hero() {
                   fontSize: '0.65rem',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'rgba(242,237,232,0.5)',
+                  color: 'rgba(242,237,232,0.65)',
                   marginTop: '0.2rem',
                 }}
               >
@@ -119,7 +130,7 @@ export default function Hero() {
             <div>
               <p
                 style={{
-                  fontFamily: "'Cormorant Garamond',serif",
+                  fontFamily: 'var(--font-display), Georgia, serif',
                   fontSize: '1.75rem',
                   fontWeight: 300,
                   lineHeight: 1,
@@ -134,7 +145,7 @@ export default function Hero() {
                   fontSize: '0.65rem',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'rgba(242,237,232,0.5)',
+                  color: 'rgba(242,237,232,0.65)',
                   marginTop: '0.2rem',
                 }}
               >
@@ -147,7 +158,7 @@ export default function Hero() {
             <div>
               <p
                 style={{
-                  fontFamily: "'Cormorant Garamond',serif",
+                  fontFamily: 'var(--font-display), Georgia, serif',
                   fontSize: '1.75rem',
                   fontWeight: 300,
                   lineHeight: 1,
@@ -162,7 +173,7 @@ export default function Hero() {
                   fontSize: '0.65rem',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'rgba(242,237,232,0.5)',
+                  color: 'rgba(242,237,232,0.65)',
                   marginTop: '0.2rem',
                 }}
               >

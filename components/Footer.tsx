@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { SITE } from '@/data/site';
+import { COMPANY, SITE } from '@/data/site';
+import { CookieSettingsLink } from '@/components/CookieConsent';
 
 export default function Footer() {
   return (
@@ -12,39 +13,47 @@ export default function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/brand_assets/Staged%20ready.jpeg"
-                alt="Staged Ready"
+                alt=""
+                width={44}
+                height={44}
                 style={{ height: '2.75rem', width: '2.75rem', objectFit: 'cover' }}
               />
               <div>
-                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1.1rem', fontWeight: 400, color: '#F2EDE8', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                <p style={{ fontFamily: 'var(--font-display), Georgia, serif', fontSize: '1.1rem', fontWeight: 400, color: '#F2EDE8', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                   Staged Ready
                 </p>
-                <p style={{ fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.35)' }}>
+                <p style={{ fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.65)' }}>
                   Property Staging
                 </p>
               </div>
             </div>
-            <p style={{ fontSize: '0.875rem', lineHeight: 1.75, color: 'rgba(242,237,232,0.4)', maxWidth: '28ch' }}>
+            <p style={{ fontSize: '0.875rem', lineHeight: 1.75, color: 'rgba(242,237,232,0.65)', maxWidth: '28ch' }}>
               Professional property staging for sale, HMO, and service accommodation.
             </p>
+            <address style={{ fontStyle: 'normal', display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1.5rem' }}>
+              <span style={{ fontSize: '0.875rem', color: 'rgba(242,237,232,0.65)' }}>{SITE.locationLong}</span>
+              <a href={SITE.phoneHref} className="footer-link">{SITE.phoneDisplay}</a>
+              <a href={`mailto:${SITE.email}`} className="footer-link">{SITE.email}</a>
+            </address>
           </div>
 
           {/* Nav links */}
           <div>
-            <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.3)', marginBottom: '1.25rem', fontWeight: 600 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.65)', marginBottom: '1.25rem', fontWeight: 600 }}>
               Navigation
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <a href="/#services" className="footer-link">Services</a>
               <a href="/#portfolio" className="footer-link">Portfolio</a>
               <a href="/#process" className="footer-link">Process</a>
+              <Link href="/faq" className="footer-link">FAQ</Link>
               <a href="/#contact" className="footer-link">Contact</a>
             </div>
           </div>
 
           {/* Services + social */}
           <div>
-            <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.3)', marginBottom: '1.25rem', fontWeight: 600 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.65)', marginBottom: '1.25rem', fontWeight: 600 }}>
               Services
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
@@ -80,13 +89,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6">
-          <p style={{ fontSize: '0.75rem', color: 'rgba(242,237,232,0.25)' }}>
-            &copy; 2026 Staged Ready. All rights reserved.
-          </p>
-          <p style={{ fontSize: '0.75rem', color: 'rgba(242,237,232,0.2)' }}>
-            Property Staging Specialists — {SITE.location}
-          </p>
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pt-6">
+          <div style={{ fontSize: '0.75rem', lineHeight: 1.7, color: 'rgba(242,237,232,0.65)' }}>
+            <p>&copy; {new Date().getFullYear()} {COMPANY.legalName ?? SITE.name}. All rights reserved.</p>
+            {COMPANY.companyNumber && (
+              <p>
+                Registered in {COMPANY.registeredIn}, company number {COMPANY.companyNumber}
+                {COMPANY.registeredOffice && <>. Registered office: {COMPANY.registeredOffice}</>}
+              </p>
+            )}
+          </div>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/privacy" className="footer-link footer-link-sm">Privacy policy</Link>
+            <Link href="/terms" className="footer-link footer-link-sm">Terms of use</Link>
+            <Link href="/cookies" className="footer-link footer-link-sm">Cookie policy</Link>
+            <CookieSettingsLink className="footer-link footer-link-sm" />
+          </nav>
         </div>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { GA4_ID } from '@/lib/analytics';
 
 export default function ConversionTracker() {
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function ConversionTracker() {
     });
 
     // GA4 lead event
-    gtag('event', 'generate_lead');
+    gtag('event', 'generate_lead', { send_to: GA4_ID });
   }, []);
   return null;
 }

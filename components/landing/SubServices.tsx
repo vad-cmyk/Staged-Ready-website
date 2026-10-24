@@ -13,7 +13,7 @@ export default function SubServices({
     <section style={{ padding: 'clamp(5rem,10vw,8rem) 0', background: '#F2EDE8' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-14">
-          <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>{eyebrow}</p>
+          <p className="section-label reveal">{eyebrow}</p>
           <h2
             className="font-display reveal"
             style={{
@@ -47,7 +47,7 @@ export default function SubServices({
                   fontSize: '0.75rem',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: '#C9A96E',
+                  color: '#84672B',
                   fontWeight: 600,
                   marginBottom: '0.75rem',
                 }}

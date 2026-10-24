@@ -25,7 +25,7 @@ export default function Reviews({ filterService }: { filterService?: Review['ser
     <section style={{ padding: 'clamp(5rem,10vw,9rem) 0', background: '#F8F5F1' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-16">
-          <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>
+          <p className="section-label reveal">
             What Clients Say
           </p>
           <h2
@@ -52,7 +52,7 @@ export default function Reviews({ filterService }: { filterService?: Review['ser
               target="_blank"
               rel="noopener noreferrer"
               className="reveal"
-              style={{ display: 'inline-block', marginTop: '1rem', fontSize: '0.8125rem', color: '#A8844A', textDecoration: 'underline', transitionDelay: '0.25s' }}
+              style={{ display: 'inline-block', marginTop: '1rem', fontSize: '0.8125rem', color: '#84672B', textDecoration: 'underline', transitionDelay: '0.25s' }}
             >
               Read more on Google
             </a>
@@ -79,7 +79,7 @@ export default function Reviews({ filterService }: { filterService?: Review['ser
                   {review.source && (
                     <span
                       style={{
-                        fontSize: '0.6875rem', letterSpacing: '0.05em', textTransform: 'uppercase', color: '#A8844A',
+                        fontSize: '0.6875rem', letterSpacing: '0.05em', textTransform: 'uppercase', color: '#84672B',
                         border: '1px solid rgba(168,132,74,0.3)', borderRadius: '2px', padding: '0.15rem 0.5rem',
                       }}
                     >

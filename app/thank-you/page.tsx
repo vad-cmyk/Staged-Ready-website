@@ -14,7 +14,7 @@ export default function ThankYouPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <section style={{ background: '#2D2926', padding: 'clamp(8rem,16vw,12rem) 0 clamp(6rem,12vw,9rem)' }}>
           <div className="max-w-2xl mx-auto px-6 lg:px-10 text-center">
             <p className="section-label" style={{ color: 'rgba(201,169,110,0.9)' }}>Enquiry Received</p>

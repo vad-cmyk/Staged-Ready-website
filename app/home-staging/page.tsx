@@ -16,12 +16,15 @@ import FinalCTA from '@/components/landing/FinalCTA';
 export const metadata: Metadata = {
   title: 'Home Staging in Norwich & Norfolk | Staged Ready',
   description: 'Professional home staging in Norwich & Norfolk. Strategic furniture and styling that helps your property sell faster and for more money. Free consultation.',
-  alternates: { canonical: 'https://stagedready.com/home-staging' },
+  alternates: { canonical: '/home-staging' },
   openGraph: {
+    siteName: 'Staged Ready',
+    locale: 'en_GB',
+    type: 'website',
     title: 'Professional Home Staging in Norwich & Norfolk',
     description: 'Strategic home staging that helps your property sell faster and for more money.',
-    url: 'https://stagedready.com/home-staging',
-    images: ['/brand_assets/IMG_1601.jpg'],
+    url: '/home-staging',
+    images: ['/opengraph-image.jpg'],
   },
 };
 
@@ -29,7 +32,7 @@ export default function HomeStagingPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <LandingHero
           eyebrow="Home Staging Specialists"
           heading={<>Home Staging for Properties<br />for Sale — <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Norfolk &amp; East Anglia</em></>}

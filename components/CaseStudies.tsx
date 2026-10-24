@@ -21,7 +21,7 @@ function CaseStudyCard({ project }: { project: Project }) {
         <img src={project.afterImage || project.beforeImage} alt={project.title} style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover' }} />
       ) : null}
       <div style={{ padding: '1.5rem' }}>
-        <span style={{ fontSize: '0.6875rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#A8844A', border: '1px solid rgba(168,132,74,0.3)', borderRadius: '2px', padding: '0.15rem 0.5rem' }}>
+        <span style={{ fontSize: '0.6875rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#84672B', border: '1px solid rgba(168,132,74,0.3)', borderRadius: '2px', padding: '0.15rem 0.5rem' }}>
           {project.propertyType === 'sale' ? 'For Sale' : project.propertyType === 'hmo' ? 'HMO' : 'Serviced Accommodation'}
         </span>
         <h3 className="font-display" style={{ fontSize: '1.5rem', fontWeight: 400, color: '#2D2926', margin: '0.75rem 0 0.25rem' }}>
@@ -55,7 +55,7 @@ export default function CaseStudies({ propertyType }: { propertyType?: Project['
   return (
     <div className="mb-16">
       <div className="text-center mb-12">
-        <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>Case Studies</p>
+        <p className="section-label reveal">Case Studies</p>
         <h2 className="font-display reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 300, letterSpacing: '-0.03em', lineHeight: 1.05, color: '#2D2926', marginTop: '0.75rem', transitionDelay: '0.1s' }}>
           Real Results, <em style={{ fontStyle: 'italic' }}>Real Returns</em>
         </h2>

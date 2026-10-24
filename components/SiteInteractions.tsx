@@ -2,12 +2,14 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { GA4_ID } from '@/lib/analytics';
 
 export default function SiteInteractions() {
   const pathname = usePathname();
 
   useEffect(() => {
     document.body.classList.add('js-ready');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const cleanups: Array<() => void> = [];
     const on = (
       target: EventTarget,
@@ -70,7 +72,7 @@ export default function SiteInteractions() {
         (heroBg as HTMLElement).style.transform = `translateY(${scrolled * 0.42}px)`;
       }
     };
-    on(window, 'scroll', onParallax, { passive: true });
+    if (!reduceMotion) on(window, 'scroll', onParallax, { passive: true });
 
     // ─── Scroll reveal ──────────────────────────────────────
     const revealObserver = new IntersectionObserver(
@@ -96,7 +98,7 @@ export default function SiteInteractions() {
     function animateCounter(el: Element) {
       const target = parseFloat((el as HTMLElement).dataset.target || '0');
       const suffix = (el as HTMLElement).dataset.suffix || '';
-      const duration = 2200;
+      const duration = reduceMotion ? 1 : 2200;
       el.textContent = '0' + suffix;
       const start = performance.now();
       function update(now: number) {
@@ -123,7 +125,7 @@ export default function SiteInteractions() {
     cleanups.push(() => counterObserver.disconnect());
 
     // ─── Magnetic buttons ───────────────────────────────────
-    document.querySelectorAll('.btn-magnetic').forEach((btnEl) => {
+    if (!reduceMotion) document.querySelectorAll('.btn-magnetic').forEach((btnEl) => {
       const btn = btnEl as HTMLElement;
       const onMove = (e: Event) => {
         const me = e as MouseEvent;
@@ -228,7 +230,7 @@ export default function SiteInteractions() {
       w.dataLayer = w.dataLayer || [];
       const fn: (...args: any[]) => void =
         typeof w.gtag === 'function' ? w.gtag : (...a) => w.dataLayer.push(a);
-      fn('event', name, params);
+      fn('event', name, { ...params, send_to: GA4_ID });
     };
     document.querySelectorAll<HTMLAnchorElement>('a[href^="tel:"]').forEach((el) => {
       on(el, 'click', () => track('phone_click', { link_url: el.href }));

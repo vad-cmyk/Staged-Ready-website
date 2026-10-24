@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,15 +14,30 @@
   white-space: nowrap;
   border: 0;
 }
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 300;
+  padding: 0.75rem 1.25rem;
+  background: #2D2926;
+  color: #F2EDE8;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus-visible { transform: translateY(0); outline: 2px solid #C9A96E; outline-offset: 2px; }
 
 /* ─── Base ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
-  font-family: "DM Sans", system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   background: #F2EDE8;
   color: #4A4540;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ─── Grain Texture Overlay ─────────────────────────────── */
@@ -63,6 +76,9 @@ body {
   transition: color 0.3s ease;
 }
 #nav.scrolled .nav-link { color: #4A4540; }
+/* Mobile phone + menu icons have inline cream colour for the dark hero; switch on the light scrolled bar */
+#nav.scrolled #hamburger,
+#nav.scrolled .nav-icon-link { color: #2D2926 !important; }
 .nav-link::after {
   content: '';
   position: absolute;
@@ -87,9 +103,6 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/brand_assets/IMG_1601.jpg');
-  background-size: cover;
-  background-position: center 40%;
   will-change: transform;
 }
 .hero-overlay {
@@ -116,11 +129,12 @@ body {
 
 /* ─── Section Label ──────────────────────────────────────── */
 .section-label {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.6875rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #C9A96E;
+  /* Darker shade of brand gold so small labels pass WCAG AA on cream; dark sections set their own colour inline */
+  color: #84672B;
   font-weight: 500;
 }
 
@@ -132,7 +146,7 @@ body {
   padding: 0.875rem 2.25rem;
   background: #C9A96E;
   color: #2D2926;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -159,7 +173,7 @@ body {
   padding: 0.875rem 2.25rem;
   background: transparent;
   color: #F2EDE8;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -180,7 +194,7 @@ body {
   padding: 1rem 2.5rem;
   background: #C9A96E;
   color: #2D2926;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -241,7 +255,7 @@ body {
 
 /* ─── Stats Strip ────────────────────────────────────────── */
 .stat-number {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 300;
   line-height: 1;
@@ -286,7 +300,7 @@ body {
 
 /* Gallery Filter Tabs */
 .filter-tab {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -311,7 +325,7 @@ body {
   position: relative;
 }
 .process-number {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 300;
   color: rgba(201,169,110,0.25);
@@ -495,7 +509,7 @@ body {
 
 .footer-link {
   font-size: 0.875rem;
-  color: rgba(242,237,232,0.5);
+  color: rgba(242,237,232,0.65);
   text-decoration: none;
   transition: color 0.25s ease;
 }
@@ -518,3 +532,116 @@ body {
 details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
 details > summary:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+
+/* ─── Contact form ─── */
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible { outline: 2px solid #C9A96E; outline-offset: 1px; }
+
+/* ─── Inline text links (legal pages, notes) ─── */
+.inline-link:focus-visible,
+.legal-prose a:focus-visible,
+.footer-link:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+.footer-link-sm { font-size: 0.8125rem; }
+
+/* ─── Legal pages ─── */
+.legal-prose { color: #4A4540; font-size: 1rem; line-height: 1.75; }
+.legal-prose > * + * { margin-top: 1rem; }
+.legal-prose h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.625rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #2D2926;
+  margin-top: 3rem;
+}
+.legal-prose h2:first-child { margin-top: 0; }
+.legal-prose p, .legal-prose li { max-width: 68ch; }
+.legal-prose ul { list-style: disc; padding-left: 1.25rem; }
+.legal-prose li + li { margin-top: 0.5rem; }
+.legal-prose a, .legal-button-link { color: #2D2926; text-decoration: underline; text-decoration-color: #A8844A; text-underline-offset: 3px; }
+.legal-prose a:hover, .legal-button-link:hover { text-decoration-thickness: 2px; }
+.legal-table-wrap { overflow-x: auto; border: 1px solid rgba(74,69,64,0.15); background: #FFFFFF; }
+.legal-prose table { width: 100%; min-width: 40rem; border-collapse: collapse; font-size: 0.875rem; line-height: 1.6; }
+.legal-prose th, .legal-prose td { text-align: left; vertical-align: top; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(74,69,64,0.12); }
+.legal-prose th { color: #2D2926; font-weight: 600; background: #F2EDE8; }
+.legal-prose tr:last-child td { border-bottom: 0; }
+
+/* ─── 404 ─── */
+.not-found-link {
+  display: block;
+  padding: 1.125rem 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.375rem;
+  color: #2D2926;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.not-found-link:hover { color: #84672B; }
+.not-found-link:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+
+/* ─── Cookie consent panel ─── */
+.cookie-panel {
+  position: fixed;
+  z-index: 150;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  max-width: 26rem;
+  padding: 1.5rem;
+  background: #2D2926;
+  border: 1px solid rgba(201,169,110,0.25);
+  box-shadow: 0 24px 60px rgba(30,27,24,0.35), 0 4px 12px rgba(30,27,24,0.2);
+}
+@media (max-width: 639px) {
+  .cookie-panel { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; padding: 1.125rem 1.125rem 0.875rem; }
+}
+.cookie-panel:focus { outline: none; }
+.cookie-panel:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+.cookie-btn {
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: #F2EDE8;
+  border: 1.5px solid rgba(242,237,232,0.6);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+.cookie-btn:hover { background: rgba(242,237,232,0.1); border-color: #F2EDE8; }
+.cookie-btn:active { transform: translateY(1px); }
+.cookie-btn:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+.cookie-text-btn {
+  display: block;
+  margin-top: 0.875rem;
+  padding: 0.25rem 0;
+  background: none;
+  border: 0;
+  color: rgba(242,237,232,0.8);
+  font-size: 0.8125rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.cookie-text-btn:hover { color: #F2EDE8; }
+.cookie-text-btn:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+.cookie-option { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.8125rem; line-height: 1.5; color: rgba(242,237,232,0.8); cursor: pointer; }
+.cookie-option input { margin-top: 0.2rem; width: 1rem; height: 1rem; accent-color: #C9A96E; flex-shrink: 0; }
+.cookie-option strong { display: block; color: #F2EDE8; font-weight: 600; }
+.cookie-option input:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .js-ready .reveal, .js-ready .reveal-left, .js-ready .reveal-right, .js-ready .reveal-scale { opacity: 1; transform: none; }
+  .marquee-track { animation: none; }
+}
+.legal-table-wrap:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }

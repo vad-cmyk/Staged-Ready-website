@@ -8,11 +8,15 @@ export const metadata: Metadata = {
   title: 'Frequently Asked Questions | Staged Ready',
   description:
     'Answers to common questions about home staging, HMO furniture packages, and serviced accommodation furnishing with Staged Ready in Norwich & Norfolk.',
-  alternates: { canonical: 'https://stagedready.com/faq' },
+  alternates: { canonical: '/faq' },
   openGraph: {
+    siteName: 'Staged Ready',
+    locale: 'en_GB',
+    type: 'website',
     title: 'Frequently Asked Questions | Staged Ready',
     description: 'Answers to common questions about property staging with Staged Ready.',
-    url: 'https://stagedready.com/faq',
+    url: '/faq',
+    images: ['/opengraph-image.jpg'],
   },
 };
 
@@ -20,7 +24,7 @@ export default function FAQPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <section style={{ background: '#2D2926', padding: 'clamp(7rem,14vw,10rem) 0 3rem' }}>
           <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
             <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>Support</p>

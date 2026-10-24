@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Services() {
@@ -50,8 +51,7 @@ export default function Services() {
             aria-label="Property for Sale — learn more about home staging"
           >
             <div className="service-card-img">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/brand_assets/IMG_0566.JPG" alt="Elegantly staged bedroom for property sale" loading="lazy" />
+              <Image src="/brand_assets/IMG_0566.JPG" alt="Elegantly staged bedroom for property sale" width={1200} height={800} sizes="(max-width: 768px) 100vw, 33vw" />
             </div>
             <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
               <div className="section-label" style={{ marginBottom: '0.75rem' }}>
@@ -84,7 +84,7 @@ export default function Services() {
                   fontSize: '0.75rem',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: '#C9A96E',
+                  color: '#84672B',
                   fontWeight: 600,
                 }}
               >
@@ -116,8 +116,7 @@ export default function Services() {
             aria-label="HMO Furniture Packages — learn more"
           >
             <div className="service-card-img">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/brand_assets/IMG_0503.JPG" alt="Staged HMO twin bedroom with high-quality furnishings" loading="lazy" />
+              <Image src="/brand_assets/IMG_0503.JPG" alt="Staged HMO twin bedroom with high-quality furnishings" width={1200} height={800} sizes="(max-width: 768px) 100vw, 33vw" />
             </div>
             <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
               <div className="section-label" style={{ marginBottom: '0.75rem' }}>
@@ -150,7 +149,7 @@ export default function Services() {
                   fontSize: '0.75rem',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: '#C9A96E',
+                  color: '#84672B',
                   fontWeight: 600,
                 }}
               >
@@ -182,8 +181,7 @@ export default function Services() {
             aria-label="Service Accommodation Furniture Packages — learn more"
           >
             <div className="service-card-img">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/brand_assets/IMG_1599.jpg" alt="Staged luxury kitchen for service accommodation" loading="lazy" />
+              <Image src="/brand_assets/IMG_1599.jpg" alt="Staged luxury kitchen for service accommodation" width={1200} height={800} sizes="(max-width: 768px) 100vw, 33vw" />
             </div>
             <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
               <div className="section-label" style={{ marginBottom: '0.75rem' }}>
@@ -216,7 +214,7 @@ export default function Services() {
                   fontSize: '0.75rem',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: '#C9A96E',
+                  color: '#84672B',
                   fontWeight: 600,
                 }}
               >

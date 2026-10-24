@@ -16,7 +16,7 @@ export default function FAQAccordion({ eyebrow = 'FAQ', heading, items }: { eyeb
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
-          <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>{eyebrow}</p>
+          <p className="section-label reveal">{eyebrow}</p>
           <h2 className="font-display reveal" style={{ fontSize: 'clamp(2.25rem,4.5vw,3.5rem)', fontWeight: 300, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#2D2926', marginTop: '0.75rem' }}>
             {heading}
           </h2>

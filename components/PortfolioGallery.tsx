@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { projects } from '@/data/projects';
 
 type GalleryItem = {
@@ -182,11 +183,12 @@ export default function PortfolioGallery() {
             tabIndex={0}
             aria-label={item.ariaLabel}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={item.src}
               alt={item.alt}
-              loading="lazy"
+              width={1200}
+              height={800}
+              sizes="(max-width: 768px) 50vw, 33vw"
               style={item.tall ? { height: '100%' } : undefined}
             />
             <GalleryOverlayIcon />

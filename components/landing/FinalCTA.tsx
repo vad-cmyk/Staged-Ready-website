@@ -13,7 +13,7 @@ export default function FinalCTA({
     <section id="contact" className="relative grain" style={{ background: '#2D2926', padding: 'clamp(6rem,12vw,10rem) 0', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, width: '600px', height: '400px', background: 'radial-gradient(ellipse at 0% 0%, rgba(201,169,110,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div className="max-w-5xl mx-auto px-6 lg:px-10 text-center relative z-10">
-        <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.7)' }}>Get Started</p>
+        <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>Get Started</p>
         <h2 className="font-display reveal" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 300, letterSpacing: '-0.03em', lineHeight: 1, color: '#F2EDE8', marginTop: '0.75rem', marginBottom: '1.5rem' }}>
           {heading}
         </h2>

@@ -28,7 +28,7 @@ export default function Header() {
             <p
               className="text-xs tracking-widest uppercase"
               style={{
-                color: 'rgba(242,237,232,0.5)',
+                color: 'rgba(242,237,232,0.65)',
                 letterSpacing: '0.2em',
                 fontSize: '0.55rem',
                 transition: 'color 0.3s',
@@ -70,7 +70,7 @@ export default function Header() {
           <a
             href={SITE.phoneHref}
             aria-label={phoneAriaLabel}
-            className="flex items-center justify-center"
+            className="nav-icon-link flex items-center justify-center"
             style={{ width: '44px', height: '44px', color: '#F2EDE8' }}
           >
             <PhoneIcon size={20} stroke="currentColor" strokeWidth={1.75} />

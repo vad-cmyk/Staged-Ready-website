@@ -7,10 +7,10 @@ export default function TrustBar({ stats }: { stats: Stat[] }) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat) => (
             <div key={stat.label} className="reveal text-center md:text-left">
-              <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(2rem,4vw,2.75rem)', fontWeight: 300, color: '#DFC08A', letterSpacing: '-0.02em', lineHeight: 1 }}>
+              <p style={{ fontFamily: 'var(--font-display), Georgia, serif', fontSize: 'clamp(2rem,4vw,2.75rem)', fontWeight: 300, color: '#DFC08A', letterSpacing: '-0.02em', lineHeight: 1 }}>
                 {stat.value}
               </p>
-              <p style={{ fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.55)', marginTop: '0.4rem' }}>
+              <p style={{ fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(242,237,232,0.65)', marginTop: '0.4rem' }}>
                 {stat.label}
               </p>
             </div>

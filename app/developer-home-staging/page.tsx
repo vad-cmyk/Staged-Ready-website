@@ -15,12 +15,15 @@ import FinalCTA from '@/components/landing/FinalCTA';
 export const metadata: Metadata = {
   title: 'Home Staging for Property Developers & New Builds | Staged Ready',
   description: 'Show-home standard staging for property developers and new-build sales suites in Norfolk. Sell faster, present to a higher standard, move to your next project sooner.',
-  alternates: { canonical: 'https://stagedready.com/developer-home-staging' },
+  alternates: { canonical: '/developer-home-staging' },
   openGraph: {
+    siteName: 'Staged Ready',
+    locale: 'en_GB',
+    type: 'website',
     title: 'Home Staging for Property Developers & New Builds',
     description: 'Show-home standard staging that helps developers sell faster and move to the next project sooner.',
-    url: 'https://stagedready.com/developer-home-staging',
-    images: ['/brand_assets/IMG_1600.jpg'],
+    url: '/developer-home-staging',
+    images: ['/opengraph-image.jpg'],
   },
 };
 
@@ -28,7 +31,7 @@ export default function DeveloperHomeStagingPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <LandingHero
           eyebrow="For Property Developers"
           heading={<>Home Staging for Property<br />Developers &amp; <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>New Builds</em></>}

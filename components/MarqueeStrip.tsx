@@ -12,10 +12,10 @@ function MarqueeSet({ ariaHidden }: { ariaHidden: boolean }) {
         <span key={item} style={{ display: 'inline-flex', alignItems: 'center', gap: '3rem' }}>
           <span
             style={{
-              fontFamily: "'Cormorant Garamond',serif",
+              fontFamily: 'var(--font-display), Georgia, serif',
               fontSize: 'clamp(1.5rem,3vw,2rem)',
               fontWeight: 300,
-              color: 'rgba(242,237,232,0.3)',
+              color: 'rgba(242,237,232,0.65)',
               letterSpacing: '0.05em',
               whiteSpace: 'nowrap',
             }}

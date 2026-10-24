@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { SITE } from '@/data/site';
 import PhoneIcon from '@/components/icons/PhoneIcon';
 
@@ -13,7 +14,7 @@ type Props = {
 export default function LandingHero({ eyebrow, heading, subhead, ctaLabel, ctaHref, heroImage }: Props) {
   return (
     <section className="grain relative" style={{ minHeight: 'min(92vh, 820px)', display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
-      <div className="absolute inset-0" style={{ backgroundImage: `url('${heroImage}')`, backgroundSize: 'cover', backgroundPosition: 'center 40%' }} />
+      <Image src={heroImage} alt="" fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
       <div
         className="absolute inset-0"
         style={{
@@ -24,7 +25,7 @@ export default function LandingHero({ eyebrow, heading, subhead, ctaLabel, ctaHr
         <div className="max-w-3xl">
           <div className="section-label mb-6 reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>{eyebrow}</div>
           <h1
-            className="font-display reveal"
+            className="font-display"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 5.25rem)', fontWeight: 300, lineHeight: 1, letterSpacing: '-0.03em', color: '#F2EDE8', marginBottom: '1.5rem', transitionDelay: '0.1s' }}
           >
             {heading}

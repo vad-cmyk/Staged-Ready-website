@@ -12,7 +12,7 @@ export default function WeHelp() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <p
           className="section-label reveal text-center"
-          style={{ color: 'rgba(201,169,110,0.7)', marginBottom: '2rem' }}
+          style={{ color: 'rgba(201,169,110,0.9)', marginBottom: '2rem' }}
         >
           We Help:
         </p>

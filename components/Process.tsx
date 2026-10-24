@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Process() {
   return (
     <section id="process" style={{ background: '#F2EDE8', padding: 'clamp(5rem,10vw,9rem) 0' }}>
@@ -47,11 +49,12 @@ export default function Process() {
 
             {/* Inline image below CTA */}
             <div style={{ marginTop: '3rem', overflow: 'hidden', position: 'relative' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/brand_assets/IMG_1600.jpg"
                 alt="Staged property interior detail"
-                loading="lazy"
+                width={1179}
+                height={762}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 style={{ width: '100%', height: '220px', objectFit: 'cover' }}
               />
               <div

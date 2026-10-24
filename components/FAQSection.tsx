@@ -29,7 +29,7 @@ export default function FAQSection({
       <div className="max-w-3xl mx-auto px-6 lg:px-10">
         {!hideHeading && (
           <div className="text-center mb-12">
-            <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>FAQ</p>
+            <p className="section-label reveal">FAQ</p>
             <h2
               className="font-display reveal"
               style={{

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const POINTS = [
   {
     label: 'Property Development Background',
@@ -21,11 +23,12 @@ export default function Founder() {
           {/* Left: portrait */}
           <div className="reveal-left" style={{ position: 'relative' }}>
             <div style={{ overflow: 'hidden', position: 'relative' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/brand_assets/IMG_1741.jpeg"
                 alt="Jazmine Harbuz — Founder of Staged Ready, styling a property"
-                loading="lazy"
+                width={900}
+                height={1200}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 style={{ width: '100%', aspectRatio: '4 / 5', objectFit: 'cover' }}
               />
               <div

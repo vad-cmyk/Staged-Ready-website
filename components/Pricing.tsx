@@ -5,7 +5,7 @@ export default function Pricing({ highlight }: { highlight?: PricingTier['id'] }
     <section id="pricing" style={{ padding: 'clamp(5rem,10vw,9rem) 0', background: '#F8F5F1' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-14">
-          <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>Investment</p>
+          <p className="section-label reveal">Investment</p>
           <h2
             className="font-display reveal"
             style={{

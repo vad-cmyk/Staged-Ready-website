@@ -30,7 +30,7 @@ export default function Contact() {
       />
 
       <div className="max-w-5xl mx-auto px-6 lg:px-10 text-center relative z-10">
-        <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.7)' }}>
+        <p className="section-label reveal" style={{ color: 'rgba(201,169,110,0.9)' }}>
           Get Started
         </p>
         <h2
@@ -79,7 +79,7 @@ export default function Contact() {
               alignItems: 'center',
               gap: '0.625rem',
               fontSize: '0.875rem',
-              color: 'rgba(242,237,232,0.5)',
+              color: 'rgba(242,237,232,0.65)',
               textDecoration: 'none',
               transition: 'color 0.25s ease',
             }}
@@ -110,7 +110,7 @@ export default function Contact() {
               alignItems: 'center',
               gap: '0.625rem',
               fontSize: '0.875rem',
-              color: 'rgba(242,237,232,0.5)',
+              color: 'rgba(242,237,232,0.65)',
               textDecoration: 'none',
               transition: 'color 0.25s ease',
             }}
@@ -119,7 +119,7 @@ export default function Contact() {
             {SITE.phoneDisplay}
           </a>
           <div style={{ width: '1px', height: '1.25rem', background: 'rgba(242,237,232,0.15)', display: 'none' }} className="sm:block" />
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontSize: '0.875rem', color: 'rgba(242,237,232,0.5)' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontSize: '0.875rem', color: 'rgba(242,237,232,0.65)' }}>
             <svg
               width="16"
               height="16"
