@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const SERVICES = ['Property for Sale', 'HMO', 'Serviced Accommodation', 'Property Developers', 'Not sure'];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^[0-9+()\-\s]{7,20}$/;
@@ -47,6 +45,14 @@ export async function POST(request: NextRequest) {
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ error: 'Please check the highlighted fields.', fields: errors }, { status: 400 });
   }
+
+  // Created per request so a missing key fails this request, not the build.
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error('Contact form email failed: RESEND_API_KEY is not set for this environment');
+    return NextResponse.json({ error: 'Failed to send enquiry. Please try again or call us directly.' }, { status: 500 });
+  }
+  const resend = new Resend(apiKey);
 
   const toEmail = process.env.CONTACT_TO_EMAIL || 'hello@stagedready.com';
   const fromEmail = process.env.CONTACT_FROM_EMAIL || 'Staged Ready Website <onboarding@resend.dev>';
