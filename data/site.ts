@@ -16,6 +16,8 @@ export const SITE = {
     facebook: 'https://www.facebook.com/stagedready/',
     linkedin: 'https://www.linkedin.com/company/staged-ready',
   },
+  // Google Business Profile (Maps listing), stable CID form of the place URL
+  googleMaps: 'https://maps.google.com/?cid=10540208413829365465',
 } as const;
 
 // Legal identity of the limited company. Shown in the footer and legal pages once filled in.

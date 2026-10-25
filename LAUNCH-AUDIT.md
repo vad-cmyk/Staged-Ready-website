@@ -4,18 +4,18 @@ Stack: Next.js 14.2.18, App Router, hosted on Vercel (`.vercel/project.json` →
 Production domain: https://www.stagedready.com (apex `stagedready.com` redirects to `www`)
 Business: Staged Ready (limited company), property staging, Norwich — serving Norfolk & East Anglia. 01603 339339 · hello@stagedready.com
 
-All measurements below are from the local production build (`next build && next start`). Nothing has been deployed yet — the live site still runs the old code until this is pushed.
+Deployed to production 2026-10-24 (commit 53bbeec). Final measurements below were re-run on the live site where noted.
 
 ## Summary
 
 | | Before | After |
 |---|---|---|
-| ✅ Pass | 4 | 19 |
-| ⚠️ Needs work | 9 | 1 |
+| ✅ Pass | 4 | 20 |
+| ⚠️ Needs work | 9 | 0 |
 | ❌ Fail | 10 | 0 |
-| Lighthouse mobile, home (Perf / A11y / BP / SEO) | 59 / 97 / 77 / 100 | 94–96 / 100 / 100 / 100 |
-| Home LCP · CLS · page weight | 17.6 s · 0.147 · 4.1 MB | 2.7–3.1 s · 0 · 0.9 MB |
-| `/home-staging` Perf · LCP | 70 · 8.9 s | 95 · 2.9 s |
+| Lighthouse mobile, home (Perf / A11y / BP / SEO) | 59 / 97 / 77 / 100 | 97 / 100 / 100 / 100 (live) |
+| Home LCP · CLS · page weight | 17.6 s · 0.147 · 4.1 MB | 2.5 s · 0 · 0.75 MB (live) |
+| `/home-staging` Perf · LCP | 70 · 8.9 s | 98 · 2.5 s (live) |
 | axe WCAG 2.2 AA violations (12 pages) | 6–10 per page | 0 |
 | Cookies set before consent | `_ga`, `_ga_*` ×2, `_gcl_au`, `test_cookie`, `_gcl_ls` | none |
 | `public/brand_assets` | 19 MB | 3.9 MB |
@@ -38,7 +38,7 @@ All measurements below are from the local production build (`next build && next 
 | 15 | Custom 404 | ✅ | `/this-does-not-exist` → **404**, on-brand page with quote CTA, phone, and links to every service page. | `app/not-found.tsx` |
 | 16 | No broken links | ✅ | `linkinator --recurse`: 172 internal links, 0 broken. External check: only 404s are `www.stagedready.com/{privacy,terms,cookies,icon.png,opengraph-image.jpg}` — new files that exist after deploy. | — |
 | 11 | Compressed images | ✅ | 19 MB → 3.9 MB (originals recoverable from git). Hero, service, process, founder and gallery images now served through `next/image` with `sizes`; hero is `priority`. | Ran `optimise-images.mjs --write`; added `sharp` dev dependency |
-| 12 | Page load speed | ⚠️ | Lighthouse mobile home 94–96, LCP 2.7–3.1 s (target 2.5 s), CLS 0, TBT 20–30 ms. LCP element is the hero `<h1>` with ~80 ms render delay; the rest is simulated slow-4G + GTM/Google tag JS. | Self-hosted fonts via `next/font` (removed render-blocking Google Fonts `@import`), hero H1 no longer fades in from `opacity:0`, hero images preloaded. 🧑‍💼 Re-measure on PageSpeed Insights after deploy |
+| 12 | Page load speed | ✅ | **Live (www.stagedready.com, Lighthouse mobile): home Perf 97, LCP 2.5 s, CLS 0, TBT 10 ms, 754 KB; /home-staging Perf 98, LCP 2.5 s.** Local build was Lighthouse mobile home 94–96, LCP 2.7–3.1 s (target 2.5 s), CLS 0, TBT 20–30 ms. LCP element is the hero `<h1>` with ~80 ms render delay; the rest is simulated slow-4G + GTM/Google tag JS. | Self-hosted fonts via `next/font` (removed render-blocking Google Fonts `@import`), hero H1 no longer fades in from `opacity:0`, hero images preloaded. 🧑‍💼 Re-measure on PageSpeed Insights after deploy |
 | 14 | Mobile friendly | ✅ | 0 px horizontal scroll on all pages at 390px (was 8 px); CTA above the fold; form single-column with 16px inputs; mobile header icons now dark on the light scrolled bar. | `overflow-x: clip`, form grid, nav icon colour |
 | 10 | Alt text | ✅ | All content images have descriptive alt; decorative hero backgrounds and the footer logo next to the brand name use `alt=""`. | — |
 | 13 | Colour contrast | ✅ | axe WCAG 2.2 AA: 0 violations on all 12 pages (was 6–10 each). | Small gold text on cream now `#84672B` (same hue as brand gold, 4.5:1+); brand gold `#C9A96E` kept for dark backgrounds, buttons, borders and large decorative numbers. Cream text on dark raised to ≥ 65% opacity (footer was 20–40%) |
@@ -52,7 +52,7 @@ All measurements below are from the local production build (`next build && next 
 | Crawlable content | ✅ | Raw HTML contains `<h1>`, copy, phone and "Norwich" on every page. | — |
 | Headings | ⚠️ | One `<h1>` per page. `/portfolio` H1 is a tagline ("Staging That Performs"). | Optional: "Property Staging Portfolio — Norfolk & East Anglia" (left as is — copy change for the client) |
 | One page per service | ✅ | 4 service pages, each in the sitemap. | — |
-| LocalBusiness structured data | ✅ | `LocalBusiness` JSON-LD on every page: name, url, phone, email, Norwich/Norfolk/GB, areaServed, sameAs (Instagram, Facebook, LinkedIn). No invented address, hours or ratings. | 🧑‍💼 Add opening hours + Google Business Profile URL when known; validate with Rich Results Test after deploy |
+| LocalBusiness structured data | ✅ | `LocalBusiness` JSON-LD on every page: name, url, phone, email, Norwich/Norfolk/GB, areaServed, sameAs (Instagram, Facebook, LinkedIn) + Google Business Profile (`hasMap`, added 2026-10-25). No invented address, hours or ratings. | 🧑‍💼 Add opening hours when known; validate with Rich Results Test after deploy |
 | Canonical domain | ⚠️ | Code now uses `www` everywhere. Apex → www is a **307 temporary** redirect on Vercel. | 🧑‍💼 Make it permanent (308) |
 | NAP in footer | ✅ | Footer: "Norwich, UK — serving Norfolk…", phone and email as text on every page. | — |
 | Redirects from old site | ✅ N/A | Client confirmed no previous site. | — |

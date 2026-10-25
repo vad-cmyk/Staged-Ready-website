@@ -54,7 +54,8 @@ const localBusinessJsonLd = {
     addressCountry: 'GB',
   },
   areaServed: SITE.areaServed.map((name) => ({ '@type': 'AdministrativeArea', name })),
-  sameAs: [SITE.social.instagram, SITE.social.facebook, SITE.social.linkedin],
+  hasMap: SITE.googleMaps,
+  sameAs: [SITE.googleMaps, SITE.social.instagram, SITE.social.facebook, SITE.social.linkedin],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
