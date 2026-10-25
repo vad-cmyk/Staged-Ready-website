@@ -36,9 +36,9 @@ export type Review = {
 
 export const reviews: Review[] = [];
 
-// TODO: once we have a Google Business Profile review link, put it here and
-// it will appear as "Read more on Google" at the top of the Reviews section.
-export const GOOGLE_REVIEWS_URL: string | null = null;
+// Google Business Profile "Ask for reviews" link — opens the write-a-review box.
+// Shown in the footer on every page, and in the Reviews section once it has reviews.
+export const GOOGLE_REVIEWS_URL: string | null = 'https://g.page/r/Cdn-4Ty1V0aSEAE/review';
 
 // Later option (do NOT implement yet — native/static only for now):
 // swap this static array for a live fetch from the Google Places API, or

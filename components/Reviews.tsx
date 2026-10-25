@@ -54,7 +54,7 @@ export default function Reviews({ filterService }: { filterService?: Review['ser
               className="reveal"
               style={{ display: 'inline-block', marginTop: '1rem', fontSize: '0.8125rem', color: '#84672B', textDecoration: 'underline', transitionDelay: '0.25s' }}
             >
-              Read more on Google
+              Leave a Google review
             </a>
           )}
         </div>

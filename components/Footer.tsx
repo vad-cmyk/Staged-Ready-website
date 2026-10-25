@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { COMPANY, SITE } from '@/data/site';
+import { GOOGLE_REVIEWS_URL } from '@/data/reviews';
 import { CookieSettingsLink } from '@/components/CookieConsent';
 
 export default function Footer() {
@@ -85,6 +86,19 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
+            {GOOGLE_REVIEWS_URL && (
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem' }}
+              >
+                <span aria-hidden="true" style={{ color: '#C9A96E' }}>★</span>
+                Leave us a Google review
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+            )}
           </div>
         </div>
 
