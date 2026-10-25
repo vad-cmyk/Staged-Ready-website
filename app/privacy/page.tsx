@@ -80,16 +80,14 @@ export default function PrivacyPage() {
         <li><strong>Vercel Inc.</strong> — hosts this website.</li>
         <li><strong>Resend</strong> — delivers enquiry form messages to our inbox.</li>
         <li><strong>Google</strong> — Google Tag Manager, Google Analytics and Google Ads, only where you have given consent.</li>
-        <li>
-          Our email provider, accountant and IT providers, where needed to run the business.{' '}
-          {/* TODO(client): name your email provider and any CRM or booking tools you use */}
-        </li>
+        <li><strong>Microsoft</strong> — Microsoft 365 (provided through GoDaddy) hosts our email inbox, where your enquiry and our replies are stored.</li>
+        <li>Our accountant and IT providers, where needed to run the business.</li>
       </ul>
       <p>We may also share data where the law requires it, for example with HMRC.</p>
 
       <h2>International transfers</h2>
       <p>
-        Vercel, Resend and Google are based in the United States, so your data may be processed outside the UK. Where
+        Vercel, Resend, Google and Microsoft are based in the United States, so your data may be processed outside the UK. Where
         this happens we rely on appropriate safeguards — the UK Extension to the EU–US Data Privacy Framework or the
         UK International Data Transfer Addendum to the European Commission&apos;s standard contractual clauses.
       </p>

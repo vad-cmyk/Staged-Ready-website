@@ -37,4 +37,4 @@ export const COMPANY: {
   vatNumber: null, // Add the VAT number here if the company becomes VAT-registered
 };
 
-export const LEGAL_LAST_UPDATED = '24 October 2026';
+export const LEGAL_LAST_UPDATED = '25 October 2026';
