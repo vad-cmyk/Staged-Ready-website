@@ -39,6 +39,7 @@ export default function DeveloperHomeStagingPage() {
           ctaLabel="Book a Free Consultation"
           ctaHref="#contact"
           heroImage="/brand_assets/IMG_1600.jpg"
+          heroAlt="Staged bedroom in a converted barn with crisp white bedding, navy cushions and exposed roof trusses"
         />
         <TrustBar
           stats={[

@@ -7,7 +7,7 @@ export default function Lightbox() {
         </svg>
       </button>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img id="lightbox-img" src="" alt="" />
+      <img id="lightbox-img" alt="Enlarged portfolio photo" />
     </div>
   );
 }

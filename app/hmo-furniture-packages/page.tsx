@@ -39,6 +39,7 @@ export default function HmoFurniturePackagesPage() {
           ctaLabel="Book a Free Consultation"
           ctaHref="#contact"
           heroImage="/brand_assets/IMG_1741.jpeg"
+          heroAlt="Staged Ready founder Jazmine Harbuz in a styled living room with a cream corner sofa and beamed ceiling"
         />
         <TrustBar
           stats={[

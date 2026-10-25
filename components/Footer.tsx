@@ -14,7 +14,7 @@ export default function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/brand_assets/Staged%20ready.jpeg"
-                alt=""
+                alt="Staged Ready logo"
                 width={44}
                 height={44}
                 style={{ height: '2.75rem', width: '2.75rem', objectFit: 'cover' }}

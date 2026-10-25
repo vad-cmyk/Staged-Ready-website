@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="hero-bg" id="hero-bg">
         <Image
           src="/brand_assets/IMG_1601.jpg"
-          alt=""
+          alt="Staged open-plan barn conversion with teal sofas, mustard cushions and a navy kitchen"
           fill
           priority
           sizes="100vw"

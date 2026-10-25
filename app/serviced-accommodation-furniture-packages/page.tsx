@@ -39,6 +39,7 @@ export default function ServicedAccommodationPage() {
           ctaLabel="Book a Free Consultation"
           ctaHref="#contact"
           heroImage="/brand_assets/IMG_1734.jpeg"
+          heroAlt="Staged Ready founder Jazmine Harbuz styling recessed shelves beside a media wall and log store"
         />
         <TrustBar
           stats={[

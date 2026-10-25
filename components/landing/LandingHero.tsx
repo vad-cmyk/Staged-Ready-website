@@ -9,12 +9,13 @@ type Props = {
   ctaLabel: string;
   ctaHref: string;
   heroImage: string;
+  heroAlt: string;
 };
 
-export default function LandingHero({ eyebrow, heading, subhead, ctaLabel, ctaHref, heroImage }: Props) {
+export default function LandingHero({ eyebrow, heading, subhead, ctaLabel, ctaHref, heroImage, heroAlt }: Props) {
   return (
     <section className="grain relative" style={{ minHeight: 'min(92vh, 820px)', display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
-      <Image src={heroImage} alt="" fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
+      <Image src={heroImage} alt={heroAlt} fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
       <div
         className="absolute inset-0"
         style={{

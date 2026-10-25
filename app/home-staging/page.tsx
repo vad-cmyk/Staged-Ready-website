@@ -40,6 +40,7 @@ export default function HomeStagingPage() {
           ctaLabel="Get a free staging quote"
           ctaHref="#contact"
           heroImage="/brand_assets/IMG_1601.jpg"
+          heroAlt="Staged open-plan barn conversion with teal sofas, mustard cushions and a navy kitchen"
         />
         <SubServices
           eyebrow="What We Offer"
