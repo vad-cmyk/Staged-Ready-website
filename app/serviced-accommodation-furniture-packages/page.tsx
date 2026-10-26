@@ -14,7 +14,7 @@ import FinalCTA from '@/components/landing/FinalCTA';
 
 export const metadata: Metadata = {
   title: 'Serviced Accommodation Furniture Packages | Staged Ready',
-  description: 'Turnkey furniture packages for Airbnb, short-let and serviced accommodation properties in Norfolk. Styled to win bookings and maximise occupancy and nightly rate.',
+  description: 'Turnkey furniture packages for Airbnb, short-let and serviced accommodation in Norfolk, styled to win bookings and maximise occupancy and nightly rate.',
   alternates: { canonical: '/serviced-accommodation-furniture-packages' },
   openGraph: {
     siteName: 'Staged Ready',

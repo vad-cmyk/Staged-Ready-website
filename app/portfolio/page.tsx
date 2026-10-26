@@ -7,7 +7,7 @@ import Lightbox from '@/components/Lightbox';
 
 export const metadata: Metadata = {
   title: 'Portfolio | Staged Ready — Property Staging Norwich & Norfolk',
-  description: 'Browse property staging case studies and before/after transformations from Staged Ready, covering sale, HMO, and serviced accommodation properties across Norfolk.',
+  description: 'Property staging case studies and before/after transformations from Staged Ready, covering sale, HMO and serviced accommodation across Norfolk.',
   alternates: { canonical: '/portfolio' },
   openGraph: {
     siteName: 'Staged Ready',

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: 'Property Staging in Norwich & Norfolk | Staged Ready',
   description:
-    'Professional property staging for sale, HMO, and serviced accommodation in Norwich & Norfolk. Strategic staging that maximises sale price and reduces time on market.',
+    'Professional property staging in Norwich & Norfolk for homes for sale, HMOs and serviced accommodation. Sell faster and achieve a stronger price.',
   openGraph: {
     siteName: SITE.name,
     locale: 'en_GB',

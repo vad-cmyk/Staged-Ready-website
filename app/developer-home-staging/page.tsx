@@ -14,7 +14,7 @@ import FinalCTA from '@/components/landing/FinalCTA';
 
 export const metadata: Metadata = {
   title: 'Home Staging for Property Developers & New Builds | Staged Ready',
-  description: 'Show-home standard staging for property developers and new-build sales suites in Norfolk. Sell faster, present to a higher standard, move to your next project sooner.',
+  description: 'Show-home standard staging for property developers and new-build sales suites in Norfolk. Sell faster and move on to your next project sooner.',
   alternates: { canonical: '/developer-home-staging' },
   openGraph: {
     siteName: 'Staged Ready',
