@@ -328,12 +328,12 @@ body {
   font-family: var(--font-display), Georgia, serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 300;
-  color: rgba(201,169,110,0.25);
+  color: #A68248;
   line-height: 1;
   letter-spacing: -0.03em;
   transition: color 0.4s ease;
 }
-.process-step:hover .process-number { color: rgba(201,169,110,0.6); }
+.process-step:hover .process-number { color: #84672B; }
 .process-line {
   position: absolute;
   top: 1.75rem;

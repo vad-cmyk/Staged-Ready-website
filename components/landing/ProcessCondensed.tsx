@@ -13,7 +13,7 @@ export default function ProcessCondensed({ eyebrow = 'How It Works', heading }: 
         <div className="grid md:grid-cols-5 gap-6">
           {STEPS.map((step, i) => (
             <div key={step} className="reveal text-center" style={{ transitionDelay: `${i * 0.08}s` }}>
-              <p style={{ fontFamily: 'var(--font-display), Georgia, serif', fontSize: '2.25rem', fontWeight: 300, color: '#DFC08A', marginBottom: '0.5rem' }}>
+              <p style={{ fontFamily: 'var(--font-display), Georgia, serif', fontSize: '2.25rem', fontWeight: 300, color: '#A68248', marginBottom: '0.5rem' }}>
                 0{i + 1}
               </p>
               <p style={{ fontSize: '0.9375rem', fontWeight: 500, color: '#2D2926' }}>{step}</p>

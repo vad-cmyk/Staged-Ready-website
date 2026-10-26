@@ -81,7 +81,7 @@ export default function Process() {
                       fontSize: '0.7rem',
                       letterSpacing: '0.2em',
                       textTransform: 'uppercase',
-                      color: '#C9A96E',
+                      color: '#84672B',
                       fontWeight: 500,
                       marginBottom: '0.4rem',
                     }}
@@ -108,7 +108,7 @@ export default function Process() {
                       fontSize: '0.7rem',
                       letterSpacing: '0.2em',
                       textTransform: 'uppercase',
-                      color: '#C9A96E',
+                      color: '#84672B',
                       fontWeight: 500,
                       marginBottom: '0.4rem',
                     }}
@@ -136,7 +136,7 @@ export default function Process() {
                       fontSize: '0.7rem',
                       letterSpacing: '0.2em',
                       textTransform: 'uppercase',
-                      color: '#C9A96E',
+                      color: '#84672B',
                       fontWeight: 500,
                       marginBottom: '0.4rem',
                     }}
@@ -164,7 +164,7 @@ export default function Process() {
                       fontSize: '0.7rem',
                       letterSpacing: '0.2em',
                       textTransform: 'uppercase',
-                      color: '#C9A96E',
+                      color: '#84672B',
                       fontWeight: 500,
                       marginBottom: '0.4rem',
                     }}
@@ -191,7 +191,7 @@ export default function Process() {
                       fontSize: '0.7rem',
                       letterSpacing: '0.2em',
                       textTransform: 'uppercase',
-                      color: '#C9A96E',
+                      color: '#84672B',
                       fontWeight: 500,
                       marginBottom: '0.4rem',
                     }}

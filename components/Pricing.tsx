@@ -104,7 +104,7 @@ export default function Pricing({ highlight }: { highlight?: PricingTier['id'] }
                       fontSize: '0.75rem',
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: isHighlighted ? 'rgba(242,237,232,0.5)' : '#A8A29B',
+                      color: isHighlighted ? 'rgba(242,237,232,0.65)' : '#6B6460',
                     }}
                   >
                     From{' '}
@@ -115,7 +115,7 @@ export default function Pricing({ highlight }: { highlight?: PricingTier['id'] }
                       fontSize: '2.25rem',
                       fontWeight: 300,
                       letterSpacing: '-0.02em',
-                      color: isHighlighted ? '#DFC08A' : '#C9A96E',
+                      color: isHighlighted ? '#DFC08A' : '#A68248',
                     }}
                   >
                     {tier.fromPrice}

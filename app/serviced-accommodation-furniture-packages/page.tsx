@@ -13,14 +13,14 @@ import FAQAccordion from '@/components/landing/FAQAccordion';
 import FinalCTA from '@/components/landing/FinalCTA';
 
 export const metadata: Metadata = {
-  title: 'Serviced Accommodation Furniture Packages | Staged Ready',
+  title: 'Serviced Accommodation Furniture Packages in Norfolk | Staged Ready',
   description: 'Turnkey furniture packages for Airbnb, short-let and serviced accommodation in Norfolk, styled to win bookings and maximise occupancy and nightly rate.',
   alternates: { canonical: '/serviced-accommodation-furniture-packages' },
   openGraph: {
     siteName: 'Staged Ready',
     locale: 'en_GB',
     type: 'website',
-    title: 'Serviced Accommodation Furniture Packages',
+    title: 'Serviced Accommodation Furniture Packages in Norfolk',
     description: 'Turnkey furniture packages styled to win bookings and maximise occupancy and nightly rate.',
     url: '/serviced-accommodation-furniture-packages',
     images: ['/opengraph-image.jpg'],
@@ -34,7 +34,7 @@ export default function ServicedAccommodationPage() {
       <main id="main">
         <LandingHero
           eyebrow="For Airbnb & Short-Let Owners"
-          heading={<>Serviced Accommodation<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Furniture Packages</em></>}
+          heading={<>Serviced Accommodation<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Furniture Packages in Norfolk</em></>}
           subhead="Turnkey furnishing and styling that wins clicks on Airbnb and Booking.com, delivers a 5-star guest experience, and keeps your occupancy and nightly rate working as hard as possible."
           ctaLabel="Book a Free Consultation"
           ctaHref="#contact"

@@ -13,14 +13,14 @@ import FAQAccordion from '@/components/landing/FAQAccordion';
 import FinalCTA from '@/components/landing/FinalCTA';
 
 export const metadata: Metadata = {
-  title: 'Home Staging for Property Developers & New Builds | Staged Ready',
+  title: 'Developer & New Build Home Staging in Norfolk | Staged Ready',
   description: 'Show-home standard staging for property developers and new-build sales suites in Norfolk. Sell faster and move on to your next project sooner.',
   alternates: { canonical: '/developer-home-staging' },
   openGraph: {
     siteName: 'Staged Ready',
     locale: 'en_GB',
     type: 'website',
-    title: 'Home Staging for Property Developers & New Builds',
+    title: 'Developer & New Build Home Staging in Norfolk',
     description: 'Show-home standard staging that helps developers sell faster and move to the next project sooner.',
     url: '/developer-home-staging',
     images: ['/opengraph-image.jpg'],
@@ -34,7 +34,7 @@ export default function DeveloperHomeStagingPage() {
       <main id="main">
         <LandingHero
           eyebrow="For Property Developers"
-          heading={<>Home Staging for Property<br />Developers &amp; <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>New Builds</em></>}
+          heading={<>Home Staging for Property<br />Developers &amp; <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>New Builds in Norfolk</em></>}
           subhead="We present your developments to a show-home standard — generating stronger buyer interest, faster reservations, and quicker completions so you can move on to your next project."
           ctaLabel="Book a Free Consultation"
           ctaHref="#contact"

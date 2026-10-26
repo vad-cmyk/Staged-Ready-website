@@ -99,7 +99,7 @@ export default function Founder() {
                 fontSize: '0.8125rem',
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: '#C9A96E',
+                color: '#84672B',
                 fontWeight: 600,
                 marginBottom: '1.75rem',
               }}

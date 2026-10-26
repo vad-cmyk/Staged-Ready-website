@@ -13,14 +13,14 @@ import FAQAccordion from '@/components/landing/FAQAccordion';
 import FinalCTA from '@/components/landing/FinalCTA';
 
 export const metadata: Metadata = {
-  title: 'HMO Furniture Packages for Landlords | Staged Ready',
+  title: 'HMO Furniture Packages for Landlords in Norfolk | Staged Ready',
   description: 'Durable, compliant HMO furniture packages for landlords and investors in Norfolk. Command premium rents, attract quality tenants, and reduce voids.',
   alternates: { canonical: '/hmo-furniture-packages' },
   openGraph: {
     siteName: 'Staged Ready',
     locale: 'en_GB',
     type: 'website',
-    title: 'HMO Furniture Packages for Landlords',
+    title: 'HMO Furniture Packages for Landlords in Norfolk',
     description: 'Durable, compliant furniture packages that command premium rents and reduce voids.',
     url: '/hmo-furniture-packages',
     images: ['/opengraph-image.jpg'],
@@ -34,7 +34,7 @@ export default function HmoFurniturePackagesPage() {
       <main id="main">
         <LandingHero
           eyebrow="For HMO Landlords & Investors"
-          heading={<>HMO Furniture Packages<br />for <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Landlords</em></>}
+          heading={<>HMO Furniture Packages<br />for <em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Norfolk Landlords</em></>}
           subhead="Durable, compliant furnishing that presents your HMO to a standard quality tenants expect — supporting premium rents, faster lets, and fewer voids."
           ctaLabel="Book a Free Consultation"
           ctaHref="#contact"
@@ -89,6 +89,7 @@ export default function HmoFurniturePackagesPage() {
           items={[
             { question: "What's included per room or property?", answer: 'Each package is scoped to your property, typically covering bedroom furniture per room plus communal living and kitchen areas, specified for durability and HMO use.' },
             { question: 'Do you furnish communal areas?', answer: 'Yes — communal living rooms, kitchens, and dining areas can be furnished as part of the same package as individual bedrooms.' },
+            { question: 'Is your HMO furniture fire-safety compliant?', answer: 'Yes — where regulations require it, we specify fire-safety-rated furniture and furnishings for rented properties, so your HMO package is suitable for letting. We are happy to talk through the requirements for your property during the consultation.' },
             { question: "What's the lead time?", answer: 'Lead time depends on the number of rooms and furniture availability. Get in touch with your property details and timeline and we will confirm a schedule.' },
             { question: 'Is the furniture durable enough for HMO use?', answer: 'Yes — we specify furniture for durability and practicality under typical HMO turnover, not just appearance, to reduce repeat replacement costs.' },
             { question: 'Do you handle whole-property fit-outs?', answer: 'Yes — from a single room refresh to a complete whole-property fit-out across every bedroom and communal area, we can manage the full scope on one schedule.' },
