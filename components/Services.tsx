@@ -51,7 +51,7 @@ export default function Services() {
             aria-label="Property for Sale — learn more about home staging"
           >
             <div className="service-card-img">
-              <Image src="/brand_assets/IMG_0566.JPG" alt="Elegantly staged bedroom for property sale" width={1200} height={800} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+              <Image src="/brand_assets/IMG_0566.JPG" alt="Staged living room with a cream corner sofa, media wall and log store" width={1200} height={800} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
             </div>
             <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
               <div className="section-label" style={{ marginBottom: '0.75rem' }}>

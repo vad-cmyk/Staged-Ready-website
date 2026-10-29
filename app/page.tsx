@@ -6,7 +6,7 @@ import MarqueeStrip from '@/components/MarqueeStrip';
 import WeHelp from '@/components/WeHelp';
 import Services from '@/components/Services';
 import WhyStageChecklist from '@/components/WhyStageChecklist';
-import PortfolioGallery from '@/components/PortfolioGallery';
+import GalleryCarousel from '@/components/GalleryCarousel';
 import Process from '@/components/Process';
 import WhyChooseStagedReady from '@/components/WhyChooseStagedReady';
 import Pricing from '@/components/Pricing';
@@ -42,7 +42,7 @@ export default function HomePage() {
         <section id="portfolio" style={{ background: '#F8F5F1', padding: 'clamp(5rem,10vw,9rem) 0' }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
             <CaseStudies />
-            <PortfolioGallery />
+            <GalleryCarousel />
           </div>
         </section>
         <Process />
