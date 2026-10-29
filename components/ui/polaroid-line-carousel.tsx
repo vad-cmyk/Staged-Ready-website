@@ -286,6 +286,14 @@ export default function PolaroidLineCarousel({
   const drag = React.useRef(null as null | { x: number; off: number; lx: number; lt: number; v: number; moved: boolean })
   const lastTouch = React.useRef(0)
   const activeRef = React.useRef(0)
+  // Autoplay control (WCAG 2.2.2): a pause button, plus automatic pause while hovered or focused.
+  const [paused, setPaused] = React.useState(false)
+  const hovered = React.useRef(false)
+  const focusedWithin = React.useRef(false)
+  React.useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setPaused(true)
+  }, [])
+  const playing = !!autoplay && n > 1 && !paused
   const opts = React.useRef({ sag, swing })
   opts.current = { sag, swing }
 
@@ -390,13 +398,13 @@ export default function PolaroidLineCarousel({
 
   // autoplay, back to the first print after the last
   React.useEffect(() => {
-    if (!autoplay || n < 2) return
+    if (!playing) return
     const t = window.setInterval(() => {
-      if (document.hidden || drag.current || performance.now() - lastTouch.current < autoplay) return
+      if (document.hidden || drag.current || hovered.current || focusedWithin.current || performance.now() - lastTouch.current < autoplay) return
       goTo(activeRef.current >= n - 1 ? 0 : activeRef.current + 1)
     }, autoplay)
     return () => window.clearInterval(t)
-  }, [autoplay, n, goTo])
+  }, [playing, autoplay, n, goTo])
 
   const onDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest(".pl-bar")) return
@@ -473,6 +481,18 @@ export default function PolaroidLineCarousel({
       onPointerMove={onMove}
       onPointerUp={onUp}
       onPointerCancel={onUp}
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") hovered.current = true
+      }}
+      onPointerLeave={() => {
+        hovered.current = false
+      }}
+      onFocus={() => {
+        focusedWithin.current = true
+      }}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) focusedWithin.current = false
+      }}
     >
       {/* Raw text so React doesn't HTML-escape the quotes in the CSS on the server (hydration mismatch #425) */}
       <style dangerouslySetInnerHTML={{ __html: PL_CSS }} />
@@ -496,6 +516,24 @@ export default function PolaroidLineCarousel({
         <span className="pl-count" aria-hidden="true">
           <b>{pad2(active + 1)}</b> / {pad2(n)}
         </span>
+        {autoplay && n > 1 ? (
+          <button
+            type="button"
+            className="pl-btn"
+            aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+            onClick={() => setPaused((p) => !p)}
+          >
+            {paused ? (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M5 3.5v9l7.5-4.5z" fill="currentColor" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M5.5 3.5v9M10.5 3.5v9" stroke="currentColor" strokeWidth="1.6" />
+              </svg>
+            )}
+          </button>
+        ) : null}
         <button type="button" className="pl-btn" aria-label="Previous" onClick={() => step(-1)}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M10 3 5 8l5 5" stroke="currentColor" strokeWidth="1.4" />
@@ -507,7 +545,8 @@ export default function PolaroidLineCarousel({
           </svg>
         </button>
       </div>
-      <div className="pl-sr" aria-live="polite">
+      {/* Announce changes only when the visitor moves the carousel, not on every autoplay step */}
+      <div className="pl-sr" aria-live={playing ? "off" : "polite"}>
         {"Print " + (active + 1) + " of " + n + (s.title ? ": " + s.title : "")}
       </div>
     </div>

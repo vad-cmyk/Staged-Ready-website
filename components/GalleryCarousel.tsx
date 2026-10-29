@@ -60,7 +60,7 @@ export default function GalleryCarousel() {
           height="clamp(480px, 72svh, 680px)"
           cardWidth={300}
           sag={40}
-          autoplay={0}
+          autoplay={5000}
           string="#A8844A"
           background="#F8F5F1"
           ink="#2D2926"
