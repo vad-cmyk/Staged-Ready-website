@@ -36,13 +36,13 @@ export default function Services() {
               transitionDelay: '0.2s',
             }}
           >
-            Whether you&apos;re selling, letting to multiple tenants, or running a serviced accommodation, we
-            stage your property to perform at its best.
+            Whether you&apos;re selling a home, launching a new development, letting to multiple tenants, or running
+            a serviced accommodation, we stage your property to perform at its best.
           </p>
         </div>
 
-        {/* 3-column card grid */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        {/* Card grid: 2 columns on tablet, 4 on desktop */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Card 1: For Sale */}
           <Link
             href="/home-staging"
@@ -51,7 +51,7 @@ export default function Services() {
             aria-label="Property for Sale — learn more about home staging"
           >
             <div className="service-card-img">
-              <Image src="/brand_assets/IMG_0566.JPG" alt="Elegantly staged bedroom for property sale" width={1200} height={800} sizes="(max-width: 768px) 100vw, 33vw" />
+              <Image src="/brand_assets/IMG_0566.JPG" alt="Elegantly staged bedroom for property sale" width={1200} height={800} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
             </div>
             <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
               <div className="section-label" style={{ marginBottom: '0.75rem' }}>
@@ -108,19 +108,84 @@ export default function Services() {
             </div>
           </Link>
 
-          {/* Card 2: HMO */}
+          {/* Card 2: Property Developers */}
           <Link
-            href="/hmo-furniture-packages"
+            href="/developer-home-staging"
             className="service-card reveal stagger group"
-            style={{ transitionDelay: '0.1s', marginTop: '2rem' }}
-            aria-label="HMO Furniture Packages — learn more"
+            style={{ transitionDelay: '0.05s' }}
+            aria-label="Property Developers — learn more about new-build and show home staging"
           >
             <div className="service-card-img">
-              <Image src="/brand_assets/IMG_0503.JPG" alt="Staged HMO twin bedroom with high-quality furnishings" width={1200} height={800} sizes="(max-width: 768px) 100vw, 33vw" />
+              <Image src="/brand_assets/IMG_1602.jpg" alt="Staged new-build apartment living room with a velvet sofa and panelled feature wall" width={1200} height={800} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
             </div>
             <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
               <div className="section-label" style={{ marginBottom: '0.75rem' }}>
                 02
+              </div>
+              <h3
+                className="font-display"
+                style={{
+                  fontSize: '1.875rem',
+                  fontWeight: 400,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#2D2926',
+                  marginBottom: '1rem',
+                }}
+              >
+                Property
+                <br />
+                Developers
+              </h3>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.75, color: '#6B6460', marginBottom: '1.5rem' }}>
+                Show-home standard staging for new builds and developments. We help you reserve units faster,
+                protect your margin and move on to your next project sooner.
+              </p>
+              <span
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#84672B',
+                  fontWeight: 600,
+                }}
+              >
+                <span>Learn More</span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ transition: 'transform 0.25s ease' }}
+                  className="group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  <path d="M1 6h10M6 1l5 5-5 5" />
+                </svg>
+              </span>
+            </div>
+          </Link>
+
+          {/* Card 3: HMO */}
+          <Link
+            href="/hmo-furniture-packages"
+            className="service-card reveal stagger group"
+            style={{ transitionDelay: '0.1s' }}
+            aria-label="HMO Furniture Packages — learn more"
+          >
+            <div className="service-card-img">
+              <Image src="/brand_assets/IMG_0503.JPG" alt="Staged HMO twin bedroom with high-quality furnishings" width={1200} height={800} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+            </div>
+            <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
+              <div className="section-label" style={{ marginBottom: '0.75rem' }}>
+                03
               </div>
               <h3
                 className="font-display"
@@ -173,19 +238,19 @@ export default function Services() {
             </div>
           </Link>
 
-          {/* Card 3: Service Accommodation Furniture Packages */}
+          {/* Card 4: Service Accommodation Furniture Packages */}
           <Link
             href="/serviced-accommodation-furniture-packages"
             className="service-card reveal stagger group"
-            style={{ transitionDelay: '0.2s' }}
+            style={{ transitionDelay: '0.15s' }}
             aria-label="Service Accommodation Furniture Packages — learn more"
           >
             <div className="service-card-img">
-              <Image src="/brand_assets/IMG_1599.jpg" alt="Staged luxury kitchen for service accommodation" width={1200} height={800} sizes="(max-width: 768px) 100vw, 33vw" />
+              <Image src="/brand_assets/IMG_1599.jpg" alt="Staged luxury kitchen for service accommodation" width={1200} height={800} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
             </div>
             <div style={{ padding: '2rem 1.75rem 2.25rem' }}>
               <div className="section-label" style={{ marginBottom: '0.75rem' }}>
-                03
+                04
               </div>
               <h3
                 className="font-display"

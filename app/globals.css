@@ -439,8 +439,8 @@ body {
 #mobile-menu {
   display: none;
   flex-direction: column;
-  background: rgba(45,41,38,0.97);
-  backdrop-filter: blur(16px);
+  background: #2D2926;
+  box-shadow: 0 24px 48px rgba(30,27,24,0.25);
   position: absolute;
   top: 100%; left: 0; right: 0;
   padding: 1.5rem 2rem 2rem;
@@ -449,6 +449,9 @@ body {
 }
 #mobile-menu.open { display: flex; }
 #mobile-menu .nav-link { color: #F2EDE8; font-size: 1rem; letter-spacing: 0.05em; }
+/* Keep menu links light on the dark panel even when the header has its light "scrolled" style */
+#nav.scrolled #mobile-menu .nav-link { color: #F2EDE8; }
+#nav.scrolled #mobile-menu .nav-link:hover, #nav.scrolled #mobile-menu .nav-link:focus-visible { color: #C9A96E; }
 #mobile-menu .nav-link::after { background: #C9A96E; }
 
 /* ─── Divider ornament ───────────────────────────────────── */

@@ -30,11 +30,11 @@ export default function SiteInteractions() {
       if (window.scrollY > 60) {
         nav.classList.add('scrolled');
         if (navBrandName) (navBrandName as HTMLElement).style.color = '#2D2926';
-        if (navBrandSub) (navBrandSub as HTMLElement).style.color = 'rgba(74,69,64,0.5)';
+        if (navBrandSub) (navBrandSub as HTMLElement).style.color = '#4A4540';
       } else {
         nav.classList.remove('scrolled');
         if (navBrandName) (navBrandName as HTMLElement).style.color = '#F2EDE8';
-        if (navBrandSub) (navBrandSub as HTMLElement).style.color = 'rgba(242,237,232,0.5)';
+        if (navBrandSub) (navBrandSub as HTMLElement).style.color = 'rgba(242,237,232,0.65)';
       }
     };
     on(window, 'scroll', onNavScroll, { passive: true });

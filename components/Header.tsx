@@ -41,7 +41,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           <a href="/#services" className="nav-link">Services</a>
           <a href="/#portfolio" className="nav-link">Portfolio</a>
           <a href="/#process" className="nav-link">Process</a>
@@ -50,7 +50,7 @@ export default function Header() {
         </div>
 
         {/* Desktop phone + CTA */}
-        <div className="hidden md:flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-5">
           <a
             href={SITE.phoneHref}
             aria-label={phoneAriaLabel}
@@ -66,7 +66,7 @@ export default function Header() {
         </div>
 
         {/* Mobile: phone icon button + hamburger */}
-        <div className="md:hidden flex items-center gap-1">
+        <div className="lg:hidden flex items-center gap-1">
           <a
             href={SITE.phoneHref}
             aria-label={phoneAriaLabel}

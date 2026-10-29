@@ -67,9 +67,9 @@ export default function Hero() {
               transitionDelay: '0.2s',
             }}
           >
-            We help property developers maximise the sale price of their properties through strategic home
-            staging. By presenting each project at its full potential, we generate stronger buyer interest,
-            reduce time on the market and help developers move onto their next project more quickly.
+            We stage homes for sale, new-build developments, HMOs and serviced accommodation across Norfolk
+            and East Anglia — presenting each property at its full potential so it sells or lets faster, for a
+            stronger price.
           </p>
 
           <div className="flex flex-wrap gap-4 reveal stagger" style={{ transitionDelay: '0.3s' }}>

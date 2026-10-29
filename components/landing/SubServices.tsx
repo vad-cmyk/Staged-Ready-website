@@ -4,10 +4,12 @@ export default function SubServices({
   eyebrow,
   heading,
   items,
+  note,
 }: {
   eyebrow: string;
   heading: React.ReactNode;
   items: SubService[];
+  note?: React.ReactNode;
 }) {
   return (
     <section style={{ padding: 'clamp(5rem,10vw,8rem) 0', background: '#F2EDE8' }}>
@@ -64,6 +66,11 @@ export default function SubServices({
             </div>
           ))}
         </div>
+        {note && (
+          <p className="reveal text-center" style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#6B6460', marginTop: '2.5rem' }}>
+            {note}
+          </p>
+        )}
       </div>
     </section>
   );

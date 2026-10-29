@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Lightbox from '@/components/Lightbox';
@@ -59,6 +60,14 @@ export default function HomeStagingPage() {
               description: 'Editing and restyling existing furniture to present a lived-in home at its absolute best for sale.',
             },
           ]}
+          note={
+            <>
+              Selling new builds or a whole development?{' '}
+              <Link href="/developer-home-staging" style={{ color: '#2D2926', textDecoration: 'underline', textDecorationColor: '#A8844A', textUnderlineOffset: '3px' }} className="inline-link">
+                See our staging for property developers
+              </Link>
+            </>
+          }
         />
         <Benefits
           eyebrow="Why Stage?"
