@@ -907,3 +907,32 @@ details > summary:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2p
   .marquee-track { animation: none; }
 }
 .legal-table-wrap:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+
+/* ─── Outline button on light backgrounds ─── */
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.875rem 2.25rem;
+  color: #2D2926;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1.5px solid rgba(45,41,38,0.45);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+.btn-outline-dark:hover { background: #2D2926; color: #F2EDE8; border-color: #2D2926; }
+.btn-outline-dark:active { transform: translateY(1px); }
+.btn-outline-dark:focus-visible { outline: 2px solid #C9A96E; outline-offset: 3px; }
+@media (min-width: 768px) { .btn-outline-dark { align-self: auto; } }
+
+/* ─── Polaroid gallery carousel: brand fonts ─── */
+.brand-carousel .pl-note { font-family: var(--font-display), Georgia, serif; font-size: 17px; }
+.brand-carousel .pl-title { font-family: var(--font-display), Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+.brand-carousel .pl-sub,
+.brand-carousel .pl-count { font-family: var(--font-sans), system-ui, sans-serif; }
+.brand-carousel .pl-btn:focus-visible { outline-color: #A8844A; }
