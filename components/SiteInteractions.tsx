@@ -27,7 +27,7 @@ export default function SiteInteractions() {
     const navBrandSub = document.getElementById('nav-brand-sub');
     const onNavScroll = () => {
       if (!nav) return;
-      if (window.scrollY > 60) {
+      if (nav.dataset.solid === 'true' || window.scrollY > 60) {
         nav.classList.add('scrolled');
         if (navBrandName) (navBrandName as HTMLElement).style.color = '#2D2926';
         if (navBrandSub) (navBrandSub as HTMLElement).style.color = '#4A4540';

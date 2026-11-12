@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import { projects, type Project } from '@/data/projects';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
@@ -17,8 +18,15 @@ function CaseStudyCard({ project }: { project: Project }) {
       {project.beforeImage && project.afterImage ? (
         <BeforeAfterSlider beforeImage={project.beforeImage} afterImage={project.afterImage} />
       ) : project.afterImage || project.beforeImage ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={project.afterImage || project.beforeImage} alt={project.title} style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover' }} />
+        <div style={{ position: 'relative', aspectRatio: '4 / 3' }}>
+          <Image
+            src={(project.afterImage || project.beforeImage)!}
+            alt={`${project.title}, ${project.location} — after staging`}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
       ) : null}
       <div style={{ padding: '1.5rem' }}>
         <span style={{ fontSize: '0.6875rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#84672B', border: '1px solid rgba(168,132,74,0.3)', borderRadius: '2px', padding: '0.15rem 0.5rem' }}>

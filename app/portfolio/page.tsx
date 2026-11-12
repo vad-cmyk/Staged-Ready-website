@@ -6,14 +6,14 @@ import PortfolioGallery from '@/components/PortfolioGallery';
 import Lightbox from '@/components/Lightbox';
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Staged Ready — Property Staging Norwich & Norfolk',
+  title: 'Portfolio & Case Studies | Staged Ready — Norwich & Norfolk',
   description: 'Property staging case studies and before/after transformations from Staged Ready, covering sale, HMO and serviced accommodation across Norfolk.',
   alternates: { canonical: '/portfolio' },
   openGraph: {
     siteName: 'Staged Ready',
     locale: 'en_GB',
     type: 'website',
-    title: 'Portfolio | Staged Ready',
+    title: 'Portfolio & Case Studies | Staged Ready',
     description: 'Property staging case studies and before/after transformations across Norfolk.',
     url: '/portfolio',
     images: ['/opengraph-image.jpg'],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
-      <Header />
+      <Header solid />
       <main id="main">
         <section style={{ background: '#F8F5F1', padding: 'clamp(8rem,12vw,11rem) 0 clamp(5rem,10vw,9rem)' }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-10">

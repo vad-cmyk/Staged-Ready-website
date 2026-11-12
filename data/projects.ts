@@ -43,4 +43,35 @@ export type Project = {
   feedback?: string;
 };
 
-export const projects: Project[] = [];
+// Locations are listed as Norfolk pending exact towns from Vad.
+// beforeImage + feedback: [VAD TO SUPPLY] — the card upgrades itself to a
+// before/after slider and shows the quote as soon as they're added here.
+export const projects: Project[] = [
+  {
+    id: 'barn-conversion-serviced-accommodation',
+    title: 'Barn Conversion Short-Let',
+    propertyType: 'serviced',
+    location: 'Norfolk',
+    afterImage: '/brand_assets/IMG_1601.jpg',
+    summary:
+      'Turnkey furnishing of an open-plan barn conversion for serviced accommodation — living, kitchen and bedrooms styled to photograph beautifully for Airbnb and Booking.com.',
+  },
+  {
+    id: 'home-staged-for-sale',
+    title: 'Home Staged for Sale',
+    propertyType: 'sale',
+    location: 'Norfolk',
+    afterImage: '/brand_assets/IMG_0566.JPG',
+    summary:
+      'Full staging of a property going to market — living room, bedrooms and hallway dressed so buyers can picture themselves living there.',
+  },
+  {
+    id: 'hmo-furniture-package',
+    title: 'HMO Furniture Package',
+    propertyType: 'hmo',
+    location: 'Norfolk',
+    afterImage: '/brand_assets/IMG_0503.JPG',
+    summary:
+      'Multi-room furnishing for an HMO — every letting bedroom plus communal spaces, specified for durability and tenant turnover.',
+  },
+];

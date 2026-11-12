@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { SITE } from '@/data/site';
 import PhoneIcon from '@/components/icons/PhoneIcon';
 
-export default function Header() {
+export default function Header({ solid = false }: { solid?: boolean }) {
+  // solid: for pages with a light top (no dark hero) — the nav starts in its
+  // scrolled (dark-text) state and SiteInteractions keeps it there.
   const phoneAriaLabel = `Call Staged Ready on ${SITE.phoneDisplay}`;
 
   return (
-    <nav id="nav" aria-label="Main navigation">
+    <nav id="nav" aria-label="Main navigation" className={solid ? 'scrolled' : undefined} data-solid={solid ? 'true' : undefined}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group" aria-label="Staged Ready — Home">
@@ -20,7 +22,7 @@ export default function Header() {
           <div className="hidden sm:block">
             <p
               className="font-display font-500 text-sm leading-tight tracking-widest uppercase"
-              style={{ color: '#F2EDE8', letterSpacing: '0.18em', transition: 'color 0.3s' }}
+              style={{ color: solid ? '#2D2926' : '#F2EDE8', letterSpacing: '0.18em', transition: 'color 0.3s' }}
               id="nav-brand-name"
             >
               Staged Ready
@@ -28,7 +30,7 @@ export default function Header() {
             <p
               className="text-xs tracking-widest uppercase"
               style={{
-                color: 'rgba(242,237,232,0.65)',
+                color: solid ? '#4A4540' : 'rgba(242,237,232,0.65)',
                 letterSpacing: '0.2em',
                 fontSize: '0.55rem',
                 transition: 'color 0.3s',
@@ -43,7 +45,7 @@ export default function Header() {
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-8">
           <a href="/#services" className="nav-link">Services</a>
-          <a href="/#portfolio" className="nav-link">Portfolio</a>
+          <a href="/portfolio" className="nav-link">Portfolio</a>
           <a href="/#process" className="nav-link">Process</a>
           <Link href="/faq" className="nav-link">FAQ</Link>
           <a href="/#contact" className="nav-link">Contact</a>
@@ -91,7 +93,7 @@ export default function Header() {
       {/* Mobile Menu */}
       <div id="mobile-menu" role="menu">
         <a href="/#services" className="nav-link" role="menuitem">Services</a>
-        <a href="/#portfolio" className="nav-link" role="menuitem">Portfolio</a>
+        <a href="/portfolio" className="nav-link" role="menuitem">Portfolio</a>
         <a href="/#process" className="nav-link" role="menuitem">Process</a>
         <Link href="/faq" className="nav-link" role="menuitem">FAQ</Link>
         <a href="/#contact" className="nav-link" role="menuitem">Contact</a>

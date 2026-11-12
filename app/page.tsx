@@ -12,7 +12,6 @@ import WhyChooseStagedReady from '@/components/WhyChooseStagedReady';
 import Pricing from '@/components/Pricing';
 import Founder from '@/components/Founder';
 import Reviews from '@/components/Reviews';
-import CaseStudies from '@/components/CaseStudies';
 import FAQSection from '@/components/FAQSection';
 import Contact from '@/components/Contact';
 import Lightbox from '@/components/Lightbox';
@@ -41,7 +40,6 @@ export default function HomePage() {
         <WhyStageChecklist />
         <section id="portfolio" style={{ background: '#F8F5F1', padding: 'clamp(5rem,10vw,9rem) 0' }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <CaseStudies />
             <GalleryCarousel />
           </div>
         </section>

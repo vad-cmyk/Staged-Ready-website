@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import PolaroidLineCarousel, { type Slide } from '@/components/ui/polaroid-line-carousel';
-import { projects } from '@/data/projects';
 
 // Served through the Next.js image optimizer so each print downloads at ~640px, not the full photo.
 const img = (file: string) => `/_next/image?url=${encodeURIComponent('/brand_assets/' + file)}&w=640&q=75`;
@@ -22,12 +21,10 @@ const SLIDES: Slide[] = [
 ];
 
 export default function GalleryCarousel() {
-  const showHeading = projects.length === 0;
   return (
     <>
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-        {showHeading && (
-          <div>
+        <div>
             <p className="section-label reveal">Our Work</p>
             <h2
               className="font-display reveal"
@@ -45,10 +42,9 @@ export default function GalleryCarousel() {
               <br />
               Transformed
             </h2>
-          </div>
-        )}
+        </div>
         <Link href="/portfolio" className="btn-outline-dark reveal">
-          View the full portfolio
+          View case studies & portfolio
         </Link>
       </div>
 
