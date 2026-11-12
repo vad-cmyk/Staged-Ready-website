@@ -36,6 +36,13 @@ function CaseStudyCard({ project }: { project: Project }) {
           </p>
         )}
         {project.summary && <p style={{ fontSize: '0.875rem', lineHeight: 1.7, color: '#6B6460', marginTop: '0.75rem' }}>{project.summary}</p>}
+        {project.feedback && (
+          <blockquote style={{ margin: '1rem 0 0', paddingLeft: '1rem', borderLeft: '2px solid #C9A96E' }}>
+            <p className="font-display" style={{ fontSize: '1.0625rem', fontStyle: 'italic', lineHeight: 1.6, color: '#4A4540' }}>
+              &ldquo;{project.feedback}&rdquo;
+            </p>
+          </blockquote>
+        )}
       </div>
     </div>
   );

@@ -11,6 +11,8 @@ import PortfolioStrip from '@/components/landing/PortfolioStrip';
 import Reviews from '@/components/Reviews';
 import FAQAccordion from '@/components/landing/FAQAccordion';
 import FinalCTA from '@/components/landing/FinalCTA';
+import PackageDetails from '@/components/landing/PackageDetails';
+import { TRUST_STATS } from '@/data/claims';
 
 export const metadata: Metadata = {
   title: 'HMO Furniture Packages for Landlords in Norfolk | Staged Ready',
@@ -42,13 +44,9 @@ export default function HmoFurniturePackagesPage() {
           heroAlt="Staged Ready founder Jazmine Harbuz in a styled living room with a cream corner sofa and beamed ceiling"
         />
         <TrustBar
-          stats={[
-            { value: '10+', label: 'HMOs Furnished' },
-            { value: '73%', label: 'Faster Time to Let' },
-            { value: '63%', label: 'Tenants Pay More for Presentation' },
-            { value: '90%', label: "Can't Visualise an Unfurnished Room" },
-          ]}
+          stats={TRUST_STATS}
         />
+        <PackageDetails service="hmo" />
         <ProblemSolution
           eyebrow="Built for HMO Landlords"
           heading={<>A Poorly Furnished Room Is a <em style={{ fontStyle: 'italic' }}>Void Waiting to Happen</em></>}
@@ -96,6 +94,7 @@ export default function HmoFurniturePackagesPage() {
           ]}
         />
         <FinalCTA
+          defaultService="HMO"
           heading={<>Ready to Furnish Your<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>HMO?</em></>}
           subhead="Tell us about your property and we'll provide a free consultation and a furniture package proposal built for your tenants."
         />

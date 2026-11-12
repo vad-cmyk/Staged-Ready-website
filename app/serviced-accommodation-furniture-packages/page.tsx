@@ -11,6 +11,8 @@ import PortfolioStrip from '@/components/landing/PortfolioStrip';
 import Reviews from '@/components/Reviews';
 import FAQAccordion from '@/components/landing/FAQAccordion';
 import FinalCTA from '@/components/landing/FinalCTA';
+import PackageDetails from '@/components/landing/PackageDetails';
+import { TRUST_STATS } from '@/data/claims';
 
 export const metadata: Metadata = {
   title: 'Serviced Accommodation Furniture Packages in Norfolk | Staged Ready',
@@ -42,13 +44,9 @@ export default function ServicedAccommodationPage() {
           heroAlt="Staged Ready founder Jazmine Harbuz styling recessed shelves beside a media wall and log store"
         />
         <TrustBar
-          stats={[
-            { value: '10+', label: 'Properties Furnished' },
-            { value: '73%', label: 'Faster Turnaround to Live' },
-            { value: '63%', label: 'Guests Influenced by Photos' },
-            { value: '90%', label: 'Book Based on Listing Images' },
-          ]}
+          stats={TRUST_STATS}
         />
+        <PackageDetails service="sa" />
         <ProblemSolution
           eyebrow="Why It Matters"
           heading={<>Your Listing Photos Are Your <em style={{ fontStyle: 'italic' }}>Shop Window</em></>}
@@ -95,6 +93,7 @@ export default function ServicedAccommodationPage() {
           ]}
         />
         <FinalCTA
+          defaultService="Serviced Accommodation"
           heading={<>Ready to Furnish Your<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Next Listing?</em></>}
           subhead="Tell us about your property and we'll provide a free consultation and a furniture package proposal tailored to your guests."
         />

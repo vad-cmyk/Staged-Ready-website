@@ -5,7 +5,17 @@ import Link from 'next/link';
 
 type Field = 'name' | 'email' | 'phone' | 'service' | 'message';
 
-export default function ContactForm({ dark = true }: { dark?: boolean }) {
+export default function ContactForm({
+  dark = true,
+  defaultService,
+  source = 'page',
+}: {
+  dark?: boolean;
+  /** Pre-selects the Service dropdown — pass the page's own service on landing pages. */
+  defaultService?: string;
+  /** Where this form lives; 'popup' fires the popup_submit dataLayer event. */
+  source?: 'page' | 'popup';
+}) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<Field, string>>>({});
@@ -50,6 +60,16 @@ export default function ContactForm({ dark = true }: { dark?: boolean }) {
         const data = await res.json().catch(() => ({}));
         if (data.fields) setFieldErrors(data.fields);
         throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      // Remember the enquiry so the timed pop-up never shows for this visitor
+      try {
+        localStorage.setItem('sr_enquired', '1');
+      } catch {}
+      if (source === 'popup') {
+        const w = window as any;
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: 'popup_submit' });
       }
 
       window.location.href = '/thank-you';
@@ -118,7 +138,7 @@ export default function ContactForm({ dark = true }: { dark?: boolean }) {
         </div>
         <div>
           <label htmlFor="contact-service" style={labelStyle}>Service</label>
-          <select id="contact-service" name="service" required style={inputStyle('service')} {...errorProps('service')}>
+          <select id="contact-service" name="service" required defaultValue={defaultService} style={inputStyle('service')} {...errorProps('service')}>
             <option value="Property for Sale">Property for Sale</option>
             <option value="Property Developers">Property Developers</option>
             <option value="HMO">HMO Furniture Package</option>

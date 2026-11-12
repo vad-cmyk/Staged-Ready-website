@@ -894,6 +894,51 @@ details > summary:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2p
 .cookie-option strong { display: block; color: #F2EDE8; font-weight: 600; }
 .cookie-option input:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
 
+/* ─── Timed enquiry pop-up ──────────────────────────────── */
+.popup-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 180; /* above the nav (100) and cookie panel (150), below the lightbox (200) */
+  background: rgba(45,41,38,0.55);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  animation: popup-fade 0.3s ease;
+}
+.popup-panel {
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  max-height: calc(100svh - 2rem);
+  overflow-y: auto;
+  background: #F2EDE8;
+  border: 1px solid rgba(201,169,110,0.35);
+  border-radius: 4px;
+  padding: clamp(1.75rem, 5vw, 2.75rem);
+  box-shadow: 0 24px 80px -16px rgba(45,41,38,0.5);
+  animation: popup-rise 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+.popup-close {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #4A4540;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
+}
+.popup-close:hover { transform: scale(1.1); }
+.popup-close:active { transform: scale(0.95); }
+.popup-close:focus-visible { outline: 2px solid #C9A96E; outline-offset: 2px; }
+@keyframes popup-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popup-rise { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -1,4 +1,5 @@
 import TrustBar from '@/components/landing/TrustBar';
+import { TRUST_STATS } from '@/data/claims';
 
 const REASONS = [
   'Property developer founded',
@@ -46,14 +47,7 @@ export default function WhyChooseStagedReady() {
       </div>
 
       <div style={{ marginTop: 'clamp(3rem,6vw,4.5rem)' }}>
-        <TrustBar
-          stats={[
-            { value: '10+', label: 'Properties Staged' },
-            { value: '73%', label: 'Homes Staged Spend Less Time on the Market' },
-            { value: '63%', label: 'Of Buyers Pay More' },
-            { value: '90%', label: "Can't Visualise an Empty Space" },
-          ]}
-        />
+        <TrustBar stats={TRUST_STATS} />
       </div>
     </section>
   );

@@ -11,6 +11,8 @@ import PortfolioStrip from '@/components/landing/PortfolioStrip';
 import Reviews from '@/components/Reviews';
 import FAQAccordion from '@/components/landing/FAQAccordion';
 import FinalCTA from '@/components/landing/FinalCTA';
+import PackageDetails from '@/components/landing/PackageDetails';
+import { TRUST_STATS } from '@/data/claims';
 
 export const metadata: Metadata = {
   title: 'Developer & New Build Home Staging in Norfolk | Staged Ready',
@@ -42,12 +44,7 @@ export default function DeveloperHomeStagingPage() {
           heroAlt="Staged bedroom in a converted barn with crisp white bedding, navy cushions and exposed roof trusses"
         />
         <TrustBar
-          stats={[
-            { value: '10+', label: 'Developments Staged' },
-            { value: '73%', label: 'Less Time on Market' },
-            { value: '63%', label: 'Of Buyers Pay More' },
-            { value: '90%', label: "Can't Visualise an Empty Unit" },
-          ]}
+          stats={TRUST_STATS}
         />
         <ProblemSolution
           eyebrow="Built for Developers"
@@ -95,6 +92,7 @@ export default function DeveloperHomeStagingPage() {
           ]}
         />
         <FinalCTA
+          defaultService="Property Developers"
           heading={<>Ready to Stage Your<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Next Development?</em></>}
           subhead="Tell us about your development and launch timeline and we'll provide a free consultation and tailored proposal."
         />

@@ -5,9 +5,12 @@ import ContactForm from '@/components/ContactForm';
 export default function FinalCTA({
   heading,
   subhead,
+  defaultService,
 }: {
   heading: React.ReactNode;
   subhead: string;
+  /** Pre-selects the form's Service dropdown to match the page's service. */
+  defaultService?: string;
 }) {
   return (
     <section id="contact" className="relative grain" style={{ background: '#2D2926', padding: 'clamp(6rem,12vw,10rem) 0', overflow: 'hidden' }}>
@@ -21,7 +24,7 @@ export default function FinalCTA({
           {subhead}
         </p>
         <div className="reveal">
-          <ContactForm dark />
+          <ContactForm dark defaultService={defaultService} />
         </div>
         <a
           href={SITE.phoneHref}

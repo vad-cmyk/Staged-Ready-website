@@ -10,6 +10,7 @@
 //   afterImage    — optional path under /brand_assets/...
 //   stagedIn      — optional, e.g. "5 days"
 //   result        — optional, e.g. "Sold within 3 weeks"
+//   feedback      — optional client quote shown on the card
 //   summary       — optional longer blurb
 //
 // If only one of beforeImage/afterImage is set, the card shows that single
@@ -38,6 +39,8 @@ export type Project = {
   stagedIn?: string;
   result?: string;
   summary?: string;
+  /** A short client quote shown on the card, e.g. "Jaz made the whole process effortless." */
+  feedback?: string;
 };
 
 export const projects: Project[] = [];

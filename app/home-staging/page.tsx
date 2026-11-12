@@ -13,6 +13,7 @@ import Founder from '@/components/Founder';
 import Reviews from '@/components/Reviews';
 import FAQSection from '@/components/FAQSection';
 import FinalCTA from '@/components/landing/FinalCTA';
+import PackageDetails from '@/components/landing/PackageDetails';
 
 export const metadata: Metadata = {
   title: 'Home Staging in Norwich & Norfolk | Staged Ready',
@@ -43,6 +44,7 @@ export default function HomeStagingPage() {
           heroImage="/brand_assets/IMG_1601.jpg"
           heroAlt="Staged open-plan barn conversion with teal sofas, mustard cushions and a navy kitchen"
         />
+        <PackageDetails service="sale" background="#F8F5F1" />
         <SubServices
           eyebrow="What We Offer"
           heading={<>Property <em style={{ fontStyle: 'italic' }}>for Sale</em></>}
@@ -86,6 +88,7 @@ export default function HomeStagingPage() {
         <Reviews filterService="sale" />
         <FAQSection category="sale" />
         <FinalCTA
+          defaultService="Property for Sale"
           heading={<>Ready to Maximise Your<br /><em style={{ fontStyle: 'italic', color: '#DFC08A' }}>Property&apos;s Sale Potential?</em></>}
           subhead="Book a free consultation and we'll recommend the most effective staging solution for your property."
         />
