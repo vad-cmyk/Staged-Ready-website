@@ -1,21 +1,23 @@
 // What each staging package covers, plus the practical terms.
 // Rendered by <PackageDetails service="..." /> on the service pages.
 //
-// Any row set to null is HIDDEN on the site until Vad confirms the real
-// answer — fill it in here and it appears everywhere, no code changes.
+// Any row set to null is HIDDEN on the site. Terms confirmed by Vad,
+// 12 Nov 2026: sale furniture hired (6 weeks, extendable per T&Cs); SA and
+// HMO furniture purchased; photography included on all quotes; installs
+// take 2–4 days with ~2 weeks' notice.
 // Prices live in data/pricing.ts; statistics live in data/claims.ts.
 
 export type PackageInfo = {
   id: 'sale' | 'sa' | 'hmo';
   /** Bullet list under "What's included" */
   included: string[];
-  /** e.g. "Staged within 10 working days of your consultation" — null hides the row. [VAD TO CONFIRM] */
+  /** e.g. "Staged within 10 working days of your consultation" — null hides the row. */
   timescale: string | null;
   /** Practical terms — each null row is hidden until confirmed. */
   terms: {
-    /** Hired or purchased? [VAD TO CONFIRM per service] */
+    /** Hired or purchased? */
     furniture: string | null;
-    /** Hire duration and what happens after. [VAD TO CONFIRM] */
+    /** Hire duration and what happens after. */
     hireDuration: string | null;
     /** Delivery & installation — included or extra, typical lead time. */
     delivery: string | null;
@@ -35,12 +37,12 @@ export const PACKAGES: Record<PackageInfo['id'], PackageInfo> = {
       'Delivery, assembly and installation by our team',
       'Professional photography of the finished rooms',
     ],
-    timescale: null, // [VAD TO CONFIRM] e.g. 'Staged within X working days of your consultation'
+    timescale: 'Staging takes 2–4 days depending on the size of the property. Please book around two weeks ahead so we can prepare for your staging days.',
     terms: {
-      furniture: null, // [VAD TO CONFIRM] hired or purchased
-      hireDuration: null, // [VAD TO CONFIRM] e.g. 'Initial X-week hire, extendable monthly while the property sells'
+      furniture: 'Staging furniture is hired, so you present the property beautifully without buying anything.',
+      hireDuration: 'An initial 6-week hire, which can be extended — see our terms and conditions.',
       delivery: 'Delivery, assembly and installation are included — our team handles everything.',
-      photography: 'Professional photography is included, so your listing looks exceptional online.',
+      photography: 'Professional photography is included in your quote.',
     },
   },
   sa: {
@@ -51,13 +53,14 @@ export const PACKAGES: Record<PackageInfo['id'], PackageInfo> = {
       'Soft furnishings, artwork and lighting chosen to photograph well',
       'Guest-ready styling and finishing touches',
       'Delivery, assembly and installation by our team',
+      'Professional photography for your listing',
     ],
-    timescale: null, // [VAD TO CONFIRM]
+    timescale: 'Furnishing takes 2–4 days depending on the size of the property. Please book around two weeks ahead so we can prepare for your installation days.',
     terms: {
-      furniture: null, // [VAD TO CONFIRM]
-      hireDuration: null, // [VAD TO CONFIRM]
+      furniture: 'All furniture is purchased — it’s yours to keep, specified for guest use.',
+      hireDuration: null, // not applicable — furniture is purchased
       delivery: 'Delivery, assembly and installation are included, so the property is guest-ready without you managing multiple suppliers.',
-      photography: null, // [VAD TO CONFIRM]
+      photography: 'Professional photography is included in your quote.',
     },
   },
   hmo: {
@@ -68,13 +71,14 @@ export const PACKAGES: Record<PackageInfo['id'], PackageInfo> = {
       'Communal living and kitchen furnishing',
       'Durable, tenant-proof pieces specified for HMO use',
       'Delivery, assembly and installation by our team',
+      'Professional photography of the finished rooms',
     ],
-    timescale: null, // [VAD TO CONFIRM]
+    timescale: 'Furnishing takes 2–4 days depending on the size of the property. Please book around two weeks ahead so we can prepare for your installation days.',
     terms: {
-      furniture: null, // [VAD TO CONFIRM]
-      hireDuration: null, // [VAD TO CONFIRM]
+      furniture: 'All furniture is purchased — it’s yours to keep, specified for HMO use.',
+      hireDuration: null, // not applicable — furniture is purchased
       delivery: 'Delivery, assembly and installation are included across every room.',
-      photography: null, // [VAD TO CONFIRM]
+      photography: 'Professional photography is included in your quote.',
     },
   },
 };
